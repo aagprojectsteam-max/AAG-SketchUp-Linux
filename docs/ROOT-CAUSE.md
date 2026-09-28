@@ -125,3 +125,7 @@ prefix-local `ClientSideGraphics=N` setting plus an original, guarded raster
 presentation helper. See [the evidence and rejected experiments](WINDOW-PAINTING.md).
 Do not reduce DPI/MSAA, enable a software modeler or globally change the compositor.
 The exact upstream change causing the retained HTML defect remains unproven.
+
+## Version metadata used by future audits
+
+The tested SketchUp executable has fixed PE version 26.0.0.0 and bounded StringFileInfo build 26.1.252. Update comparison now preserves both and uses the unambiguous string build; filename or fixed header alone would misidentify patch releases. See [UPDATE.md](UPDATE.md).

@@ -57,3 +57,16 @@
 !/tests/popup-present-smoke.c
 !/docs/plugin-acceptance.json
 !/artifacts/production-plugin-manifest.json
+
+# Reviewed update tooling; proprietary candidates and private reports remain ignored.
+!/config/
+/config/*
+!/docs/updates/
+/docs/updates/*
+!/scripts/prepare-update.py
+!/tests/test_update_workflow.py
+!/tests/update-model.rb
+!/config/compatibility-rules.json
+!/artifacts/current-golden-baseline.json
+!/docs/update-framework-acceptance.json
+!/docs/updates/TEMPLATE.md

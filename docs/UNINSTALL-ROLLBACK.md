@@ -68,3 +68,7 @@ The private project stores the verified final installation at `backups/final-gol
 ## Plugin Golden recovery
 
 Use the verified snapshot and ownership receipts described in [PLUGIN-GOLDEN-DELTA.md](PLUGIN-GOLDEN-DELTA.md). Close the relevant prefix, preserve its current state, restore the selected snapshot directly at its original root, restore its launcher/configuration, and repeat cold-launch/model/save/desktop tests. Individual plugin rollback moves only receipt-owned additions outside search paths after checking shared dependencies. Neither path deletes Base Golden or user-provided installation material.
+
+## Future promoted candidates
+
+The [update workflow](UPDATE.md#rollback-and-rejection) changes explicit desktop entries while retaining both roots at their tested locations. Its private transaction journal stores exact before/after text for atomic replacement and recovery. Restore the matching documentation state as well; preserve all old Golden tags and check model file-format compatibility separately.

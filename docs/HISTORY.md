@@ -69,3 +69,7 @@ Critical hashes, architecture values, fault offsets, versions and conclusions ar
 ## Post-Golden plugin and painting work
 
 The [plugin report](PLUGIN-MIGRATION-REPORT.md) and [painting investigation](WINDOW-PAINTING.md) retain successful, failed and invalid experiments after the original Base release. The new plugin tag leaves the original tag unchanged.
+
+## Future update preparation
+
+The [update framework report](UPDATE-FRAMEWORK-REPORT.md) records its current-Golden self-test and implementation corrections. The protected application state remains the Plugin Golden; tooling is a separate later commit.

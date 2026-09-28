@@ -44,6 +44,15 @@ and V-Ray are deferred by user choice. Supply your own legitimate extension file
 and licenses; none are redistributed. See the [migration report](docs/PLUGIN-MIGRATION-REPORT.md),
 [painting fix](docs/WINDOW-PAINTING.md) and [rollback delta](docs/PLUGIN-GOLDEN-DELTA.md).
 
+## Future updates
+
+Use [UPDATE.md](docs/UPDATE.md) and the [reusable Codex handoff](docs/CODEX-UPDATE-PROMPT.md).
+The tooling audits a legitimate new source, creates a fresh isolated candidate,
+reevaluates compatibility fixes and requires regression before explicit promotion.
+The working Golden and rollback remain protected. See the [framework report](docs/UPDATE-FRAMEWORK-REPORT.md)
+and [immutable release history](docs/GOLDEN-HISTORY.md). Future versions are not
+assumed compatible.
+
 ## Documentation
 
 - [Installation and exact prerequisites](docs/INSTALL.md)

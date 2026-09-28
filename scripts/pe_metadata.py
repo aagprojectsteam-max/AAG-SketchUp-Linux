@@ -60,6 +60,24 @@ def inspect_pe(path):
         for name,va,vs,raw,rs in sections:
             if name != b'.rsrc': continue
             region=data[raw:raw+rs]; start=0
+            # Some applications keep 26.0.0.0 in VS_FIXEDFILEINFO while the
+            # bounded StringFileInfo block carries the actual 26.1.252 build.
+            for key in ('FileVersion', 'ProductVersion'):
+                encoded = (key+'\0').encode('utf-16le')
+                pos = 0
+                values = set()
+                while True:
+                    at = region.find(encoded, pos)
+                    if at < 0: break
+                    pos = at+len(encoded)
+                    if at < 6: continue
+                    size, chars, kind = struct.unpack_from('<HHH', region, at-6)
+                    begin = (raw+at+len(encoded)+3)//4*4-raw
+                    end = begin+chars*2
+                    if kind != 1 or not chars or end > at-6+size or end > len(region): continue
+                    value = region[begin:end].decode('utf-16le', errors='strict').rstrip('\0').strip()
+                    if value: values.add(value)
+                if values: result.setdefault('version_strings', {})[key] = sorted(values)
             while True:
                 p=region.find(b'\xbd\x04\xef\xfe',start)
                 if p < 0: break
@@ -71,5 +89,5 @@ def inspect_pe(path):
                 result['product_version']='.'.join(map(str,[fields[4]>>16,fields[4]&65535,fields[5]>>16,fields[5]&65535]))
                 break
         return result
-    except (struct.error,ValueError,IndexError) as error:
+    except (struct.error,ValueError,IndexError,UnicodeError) as error:
         return dict(result, error=str(error), architecture='INVALID_PE')

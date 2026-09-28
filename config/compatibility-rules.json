@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "required_architecture": "x86-64",
+  "known_build": {"version": "26.1.252", "exe_sha256": "f70f1c6561115d652275014dedf0ba067b59e910e6d93971c8dfabaffbc92354"},
+  "content_directories": ["Styles", "Materials", "Components", "Environments", "HatchPatterns", "Workspaces", "Tutorials"],
+  "touch": {
+    "export": "GetPointerFrameTouchInfo",
+    "stock_sha256": "996d515d8cb4828cd0a61fc82414e15ebf352e49d1d3655ca9dd0e4cbc29d7a1",
+    "patched_sha256": "4e1251c8074cef40260caf36a9c84db42be33400af88a15c39fa5f638c42df65",
+    "runtime": "GE-Proton10-25"
+  },
+  "rules": [
+    {"id": "architecture", "classification": "ALWAYS_REQUIRED", "action": "SAFE_AUTOMATIC_FIX", "behavior": "Audit only; reject wrong architecture. Never guess a replacement.", "evidence": "docs/ROOT-CAUSE.md"},
+    {"id": "msvcp", "classification": "VERSION_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "Source-dependent: keep correct x64 file; wrong architecture requires legitimate x64 input and a new audit.", "evidence": "docs/ROOT-CAUSE.md"},
+    {"id": "ucrt", "classification": "VERSION_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "Test supplied runtime first; native override only on dependency/failure evidence.", "evidence": "docs/ROOT-CAUSE.md"},
+    {"id": "touch", "classification": "RUNTIME_SPECIFIC", "action": "SAFE_AUTOMATIC_FIX", "behavior": "Only exact stock hash, absent export, known runtime and explicit request permit guarded patch. Exact patched hash is a no-op. Unknown export absence requires engineering; export presence requires native behavior testing.", "evidence": "docs/ROOT-CAUSE.md"},
+    {"id": "content", "classification": "ALWAYS_REQUIRED", "action": "REQUIRES_REVIEW", "behavior": "Audit categories and StyleTemplate; missing content blocks launch. Matching source preferred.", "evidence": "docs/ROOT-CAUSE.md"},
+    {"id": "content-26.2-restoration", "classification": "LEGACY_ONLY", "action": "REQUIRES_REVIEW", "behavior": "Mixed 26.2 content with 26.1.252 is a tested local exception, not a rule for future versions.", "evidence": "docs/GOLDEN-STATE.md"},
+    {"id": "dpi", "classification": "VERSION_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "192 DPI and HIGHDPIAWARE require Qt/CEF and pointer testing; prefer simpler settings if validated.", "evidence": "docs/GRAPHICS.md"},
+    {"id": "graphics", "classification": "VERSION_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "Classic/MSAA8 only where supported; never silently substitute software rendering.", "evidence": "docs/GRAPHICS.md"},
+    {"id": "popup-presentation", "classification": "RUNTIME_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "Wine/X11 raster and window styles are version dependent. Re-test helper eligibility, first paint and focus after framework/runtime changes.", "evidence": "docs/WINDOW-PAINTING.md"},
+    {"id": "unknown-build", "classification": "UNKNOWN", "action": "REQUIRES_REVIEW", "behavior": "REQUIRES_AUDIT; generic preparation allowed, old fixes never applied blindly.", "evidence": "docs/UPDATE.md"}
+  ]
+}

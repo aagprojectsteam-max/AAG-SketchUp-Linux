@@ -1,0 +1,333 @@
+{
+  "schema": 1,
+  "validated_date": "2026-09-28",
+  "sketchup_version": "26.1.252",
+  "sketchup_architecture": "x86-64",
+  "sketchup_exe_hash": "f70f1c6561115d652275014dedf0ba067b59e910e6d93971c8dfabaffbc92354",
+  "runtime_name": "GE-Proton10-25",
+  "runtime_version": "1762104463 GE-Proton10-25",
+  "container_version": "#Name\tVersion\t\tRuntime\tRuntime_Version\tComment\ndepot\t3.0.20260805.254768\t\t\t# Overall version number\npressure-vessel\t0.20260805.0\t\t\t\npressure-vessel-arm64\t0.20260805.0\t\t\t\nscripts\t0.20260805.0\t\t\t# from steam-runtime-tools\nsniper\t3.0.20260805.254768\tsniper\t3.0.20260805.254768\t# sniper_platform_3.0.20260805.254768/",
+  "wine_version": "10.0 Staging",
+  "graphics_engine": "Classic",
+  "graphics_api": "OpenGL 4.6 / WGL",
+  "gpu": "Intel Arc MTL",
+  "mesa_version": "26.0.8-1ubuntu0.3",
+  "aa_level": 8,
+  "dpi": 192,
+  "high_dpi_aware": true,
+  "fast_feedback": false,
+  "critical_files": {
+    "app/libcef.dll": {
+      "bytes": 238197968,
+      "sha256": "0d5e3e2eab385cf0a8710e855715395dc0f6e6a75816d59d0019481dc72a5e28",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "137.0.19+g8a1c4ce+chromium-137.0.7151.121"
+        ],
+        "ProductVersion": [
+          "137.0.19+g8a1c4ce+chromium-137.0.7151.121"
+        ]
+      },
+      "file_version": "137.0.19.0",
+      "product_version": "137.0.19.0"
+    },
+    "app/Qt6Gui.dll": {
+      "bytes": 9117392,
+      "sha256": "d5ab03ef4e509c1723c7f1e4d30a138964e8e805be40fe756625e4f03eb0905b",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "6.9.1.0"
+        ],
+        "ProductVersion": [
+          "6.9.1.0"
+        ]
+      },
+      "file_version": "6.9.1.0",
+      "product_version": "6.9.1.0"
+    },
+    "app/Qt6Core.dll": {
+      "bytes": 9942736,
+      "sha256": "b38408fe008d2f7734b372182171a47f1a09a3000d9c4584ab2d2d1fdad10af2",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "6.9.1.0"
+        ],
+        "ProductVersion": [
+          "6.9.1.0"
+        ]
+      },
+      "file_version": "6.9.1.0",
+      "product_version": "6.9.1.0"
+    },
+    "app/x64-ucrt-ruby320.dll": {
+      "bytes": 2712792,
+      "sha256": "9e05d02d47f67ef13509aa7543d45ec691b203fd0581f2d05c2cc300d304dce0",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "3.2.2p53"
+        ],
+        "ProductVersion": [
+          "3.2.2p53"
+        ]
+      },
+      "file_version": "3.2.2.53",
+      "product_version": "3.2.2.53"
+    },
+    "app/libGLESv2.dll": {
+      "bytes": 7881944,
+      "sha256": "3caf9dcc3bc2df21c34a13a9ff23abc4916610165bf07306c1a5c8a0af85cc8b",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "2.1 git hash: unknown hash"
+        ],
+        "ProductVersion": [
+          "2.1 git hash: unknown hash"
+        ]
+      },
+      "file_version": "2.1.0.0",
+      "product_version": "2.1.0.0"
+    },
+    "app/SketchUp.exe": {
+      "bytes": 20585984,
+      "sha256": "f70f1c6561115d652275014dedf0ba067b59e910e6d93971c8dfabaffbc92354",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "26.1.252"
+        ],
+        "ProductVersion": [
+          "26.1.252"
+        ]
+      },
+      "file_version": "26.0.0.0",
+      "product_version": "26.0.0.0"
+    },
+    "app/vcruntime140_1.dll": {
+      "bytes": 50112,
+      "sha256": "a7146c08f89fe5b04541ab507cdb59ff7b44534d4ba3c668a426c6450a03434e",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.51.36247.0"
+        ],
+        "ProductVersion": [
+          "14.51.36247.0"
+        ]
+      },
+      "file_version": "14.51.36247.0",
+      "product_version": "14.51.36247.0"
+    },
+    "app/msvcp140.dll": {
+      "bytes": 643512,
+      "sha256": "7c26614e1d733892c2deac7e245ce115504b1d80592dd0a01b08e3e5a55f89ca",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.51.36247.0"
+        ],
+        "ProductVersion": [
+          "14.51.36247.0"
+        ]
+      },
+      "file_version": "14.51.36247.0",
+      "product_version": "14.51.36247.0"
+    },
+    "app/libEGL.dll": {
+      "bytes": 512216,
+      "sha256": "60b0972415be11332f1f6d7984f9aede66ffc452ef5414e4378a8846bbb48567",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "2.1 git hash: unknown hash"
+        ],
+        "ProductVersion": [
+          "2.1 git hash: unknown hash"
+        ]
+      },
+      "file_version": "2.1.0.0",
+      "product_version": "2.1.0.0"
+    },
+    "app/Qt6Widgets.dll": {
+      "bytes": 6492368,
+      "sha256": "7050ba52737d6cbc57467aa05fa8ba69e7b5a515e348be91e8b612c065e42b27",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "6.9.1.0"
+        ],
+        "ProductVersion": [
+          "6.9.1.0"
+        ]
+      },
+      "file_version": "6.9.1.0",
+      "product_version": "6.9.1.0"
+    },
+    "app/vcruntime140.dll": {
+      "bytes": 178616,
+      "sha256": "d1f4225df2cd877dbf130d5668a021dce3f94118455ff5ec952061c30afc9ce7",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.51.36247.0"
+        ],
+        "ProductVersion": [
+          "14.51.36247.0"
+        ]
+      },
+      "file_version": "14.51.36247.0",
+      "product_version": "14.51.36247.0"
+    },
+    "app/Exporters/vcruntime140_1.dll": {
+      "bytes": 36048,
+      "sha256": "054dfbcb27f2fa701cd6e758c64a3947c93e3741aaf197ae5998055685acd6ca",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.28.29325.2 built by: vcwrkspc"
+        ],
+        "ProductVersion": [
+          "14.28.29325.2"
+        ]
+      },
+      "file_version": "14.28.29325.2",
+      "product_version": "14.28.29325.2"
+    },
+    "app/Exporters/msvcp140.dll": {
+      "bytes": 625360,
+      "sha256": "7570090cd65da85989ec1203708017fbe81b24a8990f678c301e65f0b16d4640",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.00.24210.0 built by: VCTOOLSREL"
+        ],
+        "ProductVersion": [
+          "14.00.24210.0"
+        ]
+      },
+      "file_version": "14.0.24210.0",
+      "product_version": "14.0.24210.0"
+    },
+    "app/Exporters/vcruntime140.dll": {
+      "bytes": 80080,
+      "sha256": "8cf015d2d8c201f112d28c088df66a0abbc9eda8f8f18acd1788ae52e328e7bc",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.00.24210.0 built by: VCTOOLSREL"
+        ],
+        "ProductVersion": [
+          "14.00.24210.0"
+        ]
+      },
+      "file_version": "14.0.24210.0",
+      "product_version": "14.0.24210.0"
+    },
+    "app/Importers/vcruntime140_1.dll": {
+      "bytes": 36048,
+      "sha256": "3dbb65ff2a87a7e79aaeec9ea0c2a716eacbfd26666b0ed98110eb9884eab6f8",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.28.29325.2 built by: vcwrkspc"
+        ],
+        "ProductVersion": [
+          "14.28.29325.2"
+        ]
+      },
+      "file_version": "14.28.29325.2",
+      "product_version": "14.28.29325.2"
+    },
+    "app/Importers/msvcp140.dll": {
+      "bytes": 625360,
+      "sha256": "7680ac3b04420cf5c073829a82ce7f7cd0f660913c630e81612c3097236208ca",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.00.24210.0 built by: VCTOOLSREL"
+        ],
+        "ProductVersion": [
+          "14.00.24210.0"
+        ]
+      },
+      "file_version": "14.0.24210.0",
+      "product_version": "14.0.24210.0"
+    },
+    "app/Importers/vcruntime140.dll": {
+      "bytes": 80080,
+      "sha256": "93b4740666cda74e72f35bff4b66b9476acf77d780522abf5e29a3ad59ef1252",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "14.00.24210.0 built by: VCTOOLSREL"
+        ],
+        "ProductVersion": [
+          "14.00.24210.0"
+        ]
+      },
+      "file_version": "14.0.24210.0",
+      "product_version": "14.0.24210.0"
+    },
+    "compatdata/pfx/drive_c/windows/system32/ucrtbase.dll": {
+      "bytes": 986504,
+      "sha256": "51cbbde17a768930300236facd9738f54b7801e6715771ff8af90bfbe3fad44f",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "10.0.10586.15 (th2_release.151119-1817)"
+        ],
+        "ProductVersion": [
+          "10.0.10586.15"
+        ]
+      },
+      "file_version": "10.0.10586.15",
+      "product_version": "10.0.10586.15"
+    },
+    "runtime/GE-Proton10-25/files/lib/wine/x86_64-windows/user32.dll": {
+      "bytes": 2756608,
+      "sha256": "4e1251c8074cef40260caf36a9c84db42be33400af88a15c39fa5f638c42df65",
+      "architecture": "x86-64",
+      "version_strings": {
+        "FileVersion": [
+          "5.01.2600.2180"
+        ],
+        "ProductVersion": [
+          "5.01.2600.2180"
+        ]
+      },
+      "file_version": "5.1.2600.2180",
+      "product_version": "5.1.2600.2180"
+    }
+  },
+  "content": {
+    "source_version": "26.2",
+    "mixed_version_exception": "Explicitly validated with 26.1.252 only",
+    "file_count": 482,
+    "categories": {
+      "Styles": 112,
+      "Materials": 291,
+      "Components": 46,
+      "Environments": 18,
+      "HatchPatterns": 12,
+      "Workspaces": 2,
+      "Tutorials": 1
+    },
+    "style_template_sha256": "30e2b7348a606956b6f8baadfb79ed07a05947724135839ac1bac7db7611f141",
+    "manifest_sha256": "ba58e8e3e5652fb732380ea7b3972c211e7bb90ac53cb0d9aeef8c1a29bc1cc9"
+  },
+  "touch_patch_state": {
+    "state": "KNOWN_PATCHED",
+    "needed": "NO",
+    "native_support": "NO",
+    "action": "NO_OP"
+  },
+  "base_golden_tag": "stable-sketchup-2026-ubuntu-final",
+  "base_golden_commit": "f06aae42b0177ce8ffb4604b61d018c39287c44d",
+  "plugin_golden_tag": "stable-sketchup-2026-ubuntu-plugins",
+  "git_commit": "785b2e1ee921f055273f99221e34f6a084e22d46",
+  "source_policy": "User supplies legitimate files; metadata only; no license or proprietary payload"
+}

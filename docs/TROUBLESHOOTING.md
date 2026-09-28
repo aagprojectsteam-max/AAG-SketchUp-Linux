@@ -102,3 +102,7 @@ The exact upstream change causing the retained HTML defect remains unproven.
 ### Instrumented close and baseline runtime warning
 
 A temporary QA-timer candidate once crashed on immediate close. Root cause is unresolved; three candidate and three production launches after removing QA passed. The bundled Xalia ReleaseChildren warning also exists in Base logs; it is not a plugin-load failure. See [bounded evidence](WINDOW-PAINTING.md#instrumented-rapid-close-crash-and-retest).
+
+## Future update preparation errors
+
+Use [UPDATE.md](UPDATE.md) for missing/ambiguous PE builds, wrong architecture, incomplete content/runtime, existing candidates and rollback failures. A rejected candidate is not a reason to overwrite production. Prefix initialization needs the normal HOME environment and the recorded GE non-Steam flags; the framework self-test caught and fixed both omissions. A partial failed prefix is retained for review and must not be blindly merged.

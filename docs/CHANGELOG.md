@@ -41,3 +41,7 @@ Preserved a full rollback and original media; relocated runtime out of Steam; re
 ## Plugin Golden — 2026-09-28
 
 Add four reviewed extension groups and scoped first-paint/focus repairs, with repeated GUI/function regression. Add audited migration tools, metadata and a verified independent plugin backup. See [release report](PLUGIN-MIGRATION-REPORT.md).
+
+## Update framework — 2026-09-28
+
+Add read-only PE/content/runtime diffing, isolated fresh candidates, conditional compatibility decisions, review gates, explicit journaled promotion/rollback, rejection and cleanup plans. The self-test left production byte-identical; no new application tag. See [framework report](UPDATE-FRAMEWORK-REPORT.md).

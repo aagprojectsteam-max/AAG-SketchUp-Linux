@@ -24,6 +24,19 @@ ALLOWED = {'.gitignore', 'LICENSE', 'README.md', 'INSTALL.md', 'TROUBLESHOOTING.
     'scripts/check-publication.py', 'tests/test_launcher_validation.py',
     'tests/test_wine_touch_patch.py'}
 ALLOWED.update({'docs/ROOT-CAUSE.md', 'scripts/runtime-exec.py', 'docs/TEST-MATRIX.md', 'tests/popup-present-smoke.c', 'docs/CODEX-HANDOFF.md', 'scripts/popup-present.c', 'docs/INSTALL.md', 'docs/CANONICAL-PATH.md', 'docs/HISTORY.md', 'docs/PLUGINS.md', 'scripts/migrate-plugin.py', 'docs/CLEANUP.md', 'docs/PLUGIN-MIGRATION.md', 'docs/WINDOW-PAINTING.md', 'docs/WINDOWS-PLUGIN-INVENTORY.md', 'docs/BASELINE.md', 'docs/TROUBLESHOOTING.md', 'scripts/pe_metadata.py', 'tests/test_plugin_migration.py', 'docs/plugin-acceptance.json', 'scripts/build-popup-helper.py', 'docs/PLUGIN-MIGRATION-REPORT.md', 'docs/GRAPHICS.md', 'docs/UNINSTALL-ROLLBACK.md', 'docs/FINAL-REPORT.md', 'scripts/audit-plugins.py', 'docs/CHANGELOG.md', 'docs/PLUGIN-USER-DATA.md', 'docs/GOLDEN-STATE.md', 'artifacts/production-plugin-manifest.json', 'docs/PLUGIN-GOLDEN-DELTA.md'})
+ALLOWED.update({
+    'artifacts/current-golden-baseline.json',
+    'config/compatibility-rules.json',
+    'docs/CODEX-UPDATE-PROMPT.md',
+    'docs/GOLDEN-HISTORY.md',
+    'docs/UPDATE-FRAMEWORK-REPORT.md',
+    'docs/UPDATE.md',
+    'docs/update-framework-acceptance.json',
+    'docs/updates/TEMPLATE.md',
+    'scripts/prepare-update.py',
+    'tests/test_update_workflow.py',
+    'tests/update-model.rb',
+})
 PATTERNS = {
     'credential token': r'\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16})\b',
     'private key': r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',
