@@ -43,3 +43,17 @@
 *.zip
 *.tar*
 .env*
+
+# Reviewed plugin release sources and metadata.
+!/artifacts/
+/artifacts/*
+!/scripts/pe_metadata.py
+!/scripts/audit-plugins.py
+!/scripts/migrate-plugin.py
+!/scripts/popup-present.c
+!/scripts/build-popup-helper.py
+!/scripts/runtime-exec.py
+!/tests/test_plugin_migration.py
+!/tests/popup-present-smoke.c
+!/docs/plugin-acceptance.json
+!/artifacts/production-plugin-manifest.json

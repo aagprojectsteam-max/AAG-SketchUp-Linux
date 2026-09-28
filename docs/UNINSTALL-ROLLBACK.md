@@ -64,3 +64,7 @@ Steam Flatpak was uninstalled without deleting account data; experiment-specific
 ## Final validated snapshot
 
 The private project stores the verified final installation at `backups/final-golden-20260928/installation`. A complete recursive comparison with symlinks compared as links returned no differences. The earlier `backups/pre-finalization-20260928-080531` remains protected separately. Restore the final snapshot to the original canonical root, then run `--check` and a model/save/reopen test. The `.aag-original` Wine DLL backups also allow individual rollback of the touch fallback, but reverting that fallback reintroduces the known direct-touch crash.
+
+## Plugin Golden recovery
+
+Use the verified snapshot and ownership receipts described in [PLUGIN-GOLDEN-DELTA.md](PLUGIN-GOLDEN-DELTA.md). Close the relevant prefix, preserve its current state, restore the selected snapshot directly at its original root, restore its launcher/configuration, and repeat cold-launch/model/save/desktop tests. Individual plugin rollback moves only receipt-owned additions outside search paths after checking shared dependencies. Neither path deletes Base Golden or user-provided installation material.

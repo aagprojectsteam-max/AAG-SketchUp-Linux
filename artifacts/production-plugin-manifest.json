@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "application_version": "26.1.252",
+  "ruby_version": "3.2.2",
+  "code_files_added": 1425,
+  "source_files_unchanged": true,
+  "plugins": [
+    {
+      "id": "PipeAlongPath",
+      "name": "Pipe Along Path",
+      "version": "2.2",
+      "vendor": "TIG",
+      "source_classification": "User-supplied Windows extension code, read only; no user/license state",
+      "installed_path": "compatdata/pfx/drive_c/users/steamuser/AppData/Roaming/SketchUp/SketchUp 2026/SketchUp/Plugins",
+      "file_count": 1,
+      "bytes": 16945,
+      "manifest_sha256": "8d0c360443ca8a7890ee0488ce7a6da4cf6343150ba4bc069b39e204b396d483",
+      "native_architecture": "Ruby/assets; no native module",
+      "dependencies": [
+        "SketchUp Ruby geometry API"
+      ],
+      "result": "COMPATIBLE",
+      "tested_functions": [
+        "Pipe from a 120-inch path; OD 4, ID 3.5, 24 segments",
+        "145 edges, 50 faces; Hebrew path save/reopen"
+      ],
+      "limitations": "Simple straight pipe only; complex paths untested",
+      "excluded": [],
+      "selected_native_candidates": []
+    },
+    {
+      "id": "kbs_facetool",
+      "name": "KBS Face Tool",
+      "version": "1.0.0",
+      "vendor": "B.S.KIM",
+      "source_classification": "User-supplied Windows extension code, read only; no user/license state",
+      "installed_path": "compatdata/pfx/drive_c/users/steamuser/AppData/Roaming/SketchUp/SketchUp 2026/SketchUp/Plugins",
+      "file_count": 10,
+      "bytes": 19750,
+      "manifest_sha256": "5e3c452536ea1aca3a11ba5a7bc9eb1027b93ee4ebe5b51ae03346de7d067d27",
+      "native_architecture": "Ruby/assets; no native module",
+      "dependencies": [
+        "SketchUp Ruby geometry API"
+      ],
+      "result": "COMPATIBLE",
+      "tested_functions": [
+        "Face from four connected edges",
+        "Face center [60,48,0]; save/reopen"
+      ],
+      "limitations": "Arc-center operation not tested",
+      "excluded": [],
+      "selected_native_candidates": []
+    },
+    {
+      "id": "SketchUcation",
+      "name": "SketchUcation",
+      "version": "5.0.6",
+      "vendor": "SketchUcation",
+      "source_classification": "User-supplied Windows extension code, read only; no user/license state",
+      "installed_path": "compatdata/pfx/drive_c/users/steamuser/AppData/Roaming/SketchUp/SketchUp 2026/SketchUp/Plugins",
+      "file_count": 118,
+      "bytes": 3855170,
+      "manifest_sha256": "e27f5f3af8dc15bd3caeaaf72e1c6dbee75a00ccf9a3ec4da3380f74fb8dda33",
+      "native_architecture": "x86-64 Ruby 3.2 selected; inactive historical vendor payloads retained",
+      "dependencies": [
+        "Ruby 3.2",
+        "CEF HtmlDialog",
+        "Vendor native licensing module for licensed dependents"
+      ],
+      "result": "PARTIAL",
+      "tested_functions": [
+        "Local manager GUI disable/re-enable",
+        "HTML callback and unchanged loader hash after repeated close/reopen"
+      ],
+      "limitations": "Online store and licensed dependents deferred",
+      "excluded": [],
+      "selected_native_candidates": [
+        {
+          "path": "SketchUcation/SCFLicense/Win64_32/SUEX_SCFLibrary_Win64_32.so",
+          "sha256": "30187cf37fd7f5291b374fb25a95ada186cd4ee6f49c3407c4ebae795bacd9f0",
+          "architecture": "x86-64",
+          "imports": [
+            "KERNEL32.dll",
+            "SHELL32.dll",
+            "x64-ucrt-ruby320.dll"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Fredo6_!LibFredo6",
+      "name": "LibFredo6",
+      "version": "15.8e",
+      "vendor": "Fredo6",
+      "source_classification": "User-supplied Windows extension code, read only; no user/license state",
+      "installed_path": "compatdata/pfx/drive_c/users/steamuser/AppData/Roaming/SketchUp/SketchUp 2026/SketchUp/Plugins",
+      "file_count": 1296,
+      "bytes": 12708468,
+      "manifest_sha256": "e768252f0bc2c12634d93bb72e10950ab1767b8f8834221da5f1c61070215590",
+      "native_architecture": "x86-64 Ruby 3.2 selected; inactive historical vendor payloads retained",
+      "dependencies": [
+        "Ruby 3.2",
+        "CEF HtmlDialog"
+      ],
+      "result": "PARTIAL",
+      "tested_functions": [
+        "Native dependency load",
+        "Default-parameters UI; save/reopen; repeated focus/first paint"
+      ],
+      "limitations": "Library/settings scope; licensed dependent modeling tools deferred",
+      "excluded": [
+        "Fredo6_!LibFredo6/Untitled.pdf"
+      ],
+      "selected_native_candidates": [
+        {
+          "path": "Fredo6_!LibFredo6/Binaries/Win64_32/bin_body_Lib6G6.so",
+          "sha256": "49cf8d710106d71b8e2725fa40a75b1b609e047dd5250b4ee3d2d2ad96158836",
+          "architecture": "x86-64",
+          "imports": [
+            "ADVAPI32.dll",
+            "COMDLG32.dll",
+            "KERNEL32.dll",
+            "SHELL32.dll",
+            "SHLWAPI.dll",
+            "USER32.dll",
+            "x64-ucrt-ruby320.dll"
+          ]
+        }
+      ]
+    }
+  ],
+  "deferred": [
+    "JointPushPull",
+    "FredoCorner",
+    "V-Ray / Chaos",
+    "Add Location online service",
+    "AI Assistant online service",
+    "AI Render online service"
+  ],
+  "bundled_preserved": [
+    "Dynamic Components 1.8.5",
+    "Sandbox Tools 2.3.5",
+    "Migrate Extensions 1.0.1"
+  ],
+  "raw_receipts": "Private; full per-file hashes are retained locally"
+}

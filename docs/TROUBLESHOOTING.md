@@ -88,3 +88,17 @@ Use Classic graphics with AAMethod=8 and fast feedback off, then fully restart S
 ## Window behavior and input testing
 
 Maximize and restore passed. A window-manager fullscreen request was ignored in the tested setup; use maximize. During automated testing on Wayland, X11 mouse warps and uinput clicks can refer to different pointer positions. This is a harness error, not proof of application pointer offset. All final click tests used consistent logical desktop coordinates and verified the selected geometry. Respect the user's Input Lock state and restore any temporary unlock or pointer configuration after tests.
+
+## Black dialogs and first-frame popup flash
+
+Post-Golden regression found two distinct paths: retained HTML client contents
+after focus changes, and an X11 window mapped with an uninitialized black
+background before its first raster paint. Candidate A/B tests support a
+prefix-local `ClientSideGraphics=N` setting plus an original, guarded raster
+presentation helper. See [the evidence and rejected experiments](WINDOW-PAINTING.md).
+Do not reduce DPI/MSAA, enable a software modeler or globally change the compositor.
+The exact upstream change causing the retained HTML defect remains unproven.
+
+### Instrumented close and baseline runtime warning
+
+A temporary QA-timer candidate once crashed on immediate close. Root cause is unresolved; three candidate and three production launches after removing QA passed. The bundled Xalia ReleaseChildren warning also exists in Base logs; it is not a plugin-load failure. See [bounded evidence](WINDOW-PAINTING.md#instrumented-rapid-close-crash-and-retest).

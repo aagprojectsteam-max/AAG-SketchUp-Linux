@@ -36,6 +36,14 @@ Follow [INSTALL.md](INSTALL.md). Supply complete user-owned app/content director
 
 Launch **SketchUp 2026** from GNOME Apps and pin that entry to the Dock. Daily use needs no terminal, sudo or Steam. The launcher retains local logs and supports `--debug`; `collect-diagnostics.py` produces a small reviewable report.
 
+## Plugins / Extensions
+
+The separate **Plugin Golden** adds Pipe Along Path, KBS Face Tool, SketchUcation
+and LibFredo6 in their [tested scopes](docs/PLUGINS.md). JointPushPull, FredoCorner
+and V-Ray are deferred by user choice. Supply your own legitimate extension files
+and licenses; none are redistributed. See the [migration report](docs/PLUGIN-MIGRATION-REPORT.md),
+[painting fix](docs/WINDOW-PAINTING.md) and [rollback delta](docs/PLUGIN-GOLDEN-DELTA.md).
+
 ## Documentation
 
 - [Installation and exact prerequisites](docs/INSTALL.md)
@@ -51,6 +59,6 @@ Launch **SketchUp 2026** from GNOME Apps and pin that entry to the Dock. Daily u
 
 ## Limits
 
-This validates basic local modeling on one recorded configuration. Cloud sign-in/licensing for another account, third-party extensions, LayOut, printing and large production workloads are untested. Unsupported direct touch is safely rejected; multitouch gestures are not implemented. Maximize/restore work; the tested fullscreen request was ignored. No reboot/logout test was performed. Changes to SketchUp, Wine, Mesa or GNOME require a new regression run.
+This validates basic local modeling on one recorded configuration. Cloud sign-in/licensing for another account, untested third-party extension features, LayOut, printing and large production workloads are untested. Unsupported direct touch is safely rejected; multitouch gestures are not implemented. Maximize/restore work; the tested fullscreen request was ignored. No reboot/logout test was performed. Changes to SketchUp, Wine, Mesa or GNOME require a new regression run.
 
 This community procedure does not imply official Trimble Linux support. The MIT license applies to the original support code/documentation, not proprietary or third-party installation material.

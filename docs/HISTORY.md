@@ -65,3 +65,7 @@ YAWMS was enabled with its intended settings. Three stale Steam/old SketchUp win
 ## Evidence handling
 
 Critical hashes, architecture values, fault offsets, versions and conclusions are public documentation. Full traces, screenshots, saved models, user preferences and dumps stay private. Original source material is retained separately from production and rollback. Deleting an abandoned prefix requires confirming it is not referenced and preserving any unique user-created models first.
+
+## Post-Golden plugin and painting work
+
+The [plugin report](PLUGIN-MIGRATION-REPORT.md) and [painting investigation](WINDOW-PAINTING.md) retain successful, failed and invalid experiments after the original Base release. The new plugin tag leaves the original tag unchanged.

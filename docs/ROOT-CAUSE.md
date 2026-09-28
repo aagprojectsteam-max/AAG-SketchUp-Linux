@@ -115,3 +115,13 @@ At Wine DPI 192, Welcome initially painted content in only part of its window an
 ## Final antialiasing comparison
 
 Classic OpenGL's GUI offers disabled, 2×, 4×, 8× and 16× AA. Controlled captures tested disabled, 2×, 4× and 8× at the same camera, geometry, window and DPI. Intermediate edge coverage increased while flat interiors remained unchanged. 8× was selected after near-equal redraw timing versus 4× on the simple model. The old AAMethod=0 setting is not part of the final configuration. Detailed measurements and limitations are in [GRAPHICS.md](GRAPHICS.md).
+
+## Black dialogs and first-frame popup flash
+
+Post-Golden regression found two distinct paths: retained HTML client contents
+after focus changes, and an X11 window mapped with an uninitialized black
+background before its first raster paint. Candidate A/B tests support a
+prefix-local `ClientSideGraphics=N` setting plus an original, guarded raster
+presentation helper. See [the evidence and rejected experiments](WINDOW-PAINTING.md).
+Do not reduce DPI/MSAA, enable a software modeler or globally change the compositor.
+The exact upstream change causing the retained HTML defect remains unproven.

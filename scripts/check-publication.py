@@ -23,6 +23,7 @@ ALLOWED = {'.gitignore', 'LICENSE', 'README.md', 'INSTALL.md', 'TROUBLESHOOTING.
     'scripts/patch-wine-touch.py', 'scripts/prepare-installation.py',
     'scripts/check-publication.py', 'tests/test_launcher_validation.py',
     'tests/test_wine_touch_patch.py'}
+ALLOWED.update({'docs/ROOT-CAUSE.md', 'scripts/runtime-exec.py', 'docs/TEST-MATRIX.md', 'tests/popup-present-smoke.c', 'docs/CODEX-HANDOFF.md', 'scripts/popup-present.c', 'docs/INSTALL.md', 'docs/CANONICAL-PATH.md', 'docs/HISTORY.md', 'docs/PLUGINS.md', 'scripts/migrate-plugin.py', 'docs/CLEANUP.md', 'docs/PLUGIN-MIGRATION.md', 'docs/WINDOW-PAINTING.md', 'docs/WINDOWS-PLUGIN-INVENTORY.md', 'docs/BASELINE.md', 'docs/TROUBLESHOOTING.md', 'scripts/pe_metadata.py', 'tests/test_plugin_migration.py', 'docs/plugin-acceptance.json', 'scripts/build-popup-helper.py', 'docs/PLUGIN-MIGRATION-REPORT.md', 'docs/GRAPHICS.md', 'docs/UNINSTALL-ROLLBACK.md', 'docs/FINAL-REPORT.md', 'scripts/audit-plugins.py', 'docs/CHANGELOG.md', 'docs/PLUGIN-USER-DATA.md', 'docs/GOLDEN-STATE.md', 'artifacts/production-plugin-manifest.json', 'docs/PLUGIN-GOLDEN-DELTA.md'})
 PATTERNS = {
     'credential token': r'\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16})\b',
     'private key': r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',

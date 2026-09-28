@@ -42,7 +42,7 @@ shutil.copy2(a.msvcp_x64, root/'app/msvcp140.dll')
 subprocess.run(['python3', str(P(__file__).with_name('patch-wine-touch.py')),
                 str(root/'runtime/GE-Proton10-25/files/lib/wine/x86_64-windows/user32.dll')], check=True)
 (root/'config/fontconfig.conf').write_text('<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n<fontconfig>\n  <include ignore_missing="yes">/etc/fonts/fonts.conf</include>\n  <selectfont><rejectfont>\n    <glob>/usr/share/fonts/noto-emoji/NotoColorEmoji.ttf</glob>\n    <glob>/run/host/fonts/truetype/noto/NotoColorEmoji.ttf</glob>\n    <glob>/run/host/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf</glob>\n  </rejectfont></selectfont>\n</fontconfig>\n')
-for name in ['launch-sketchup.py', 'install-launcher.py', 'collect-diagnostics.py']:
+for name in ['launch-sketchup.py', 'runtime-exec.py', 'install-launcher.py', 'collect-diagnostics.py']:
     source = P(__file__).with_name(name)
     if source.exists():
         shutil.copy2(source, root/'bin'/name)
@@ -82,6 +82,7 @@ def set_value(section, name, value):
 set_value('Control Panel'+chr(92)+'Desktop', 'LogPixels', 'dword:' + format(a.dpi, '08x'))
 set_value('Software'+chr(92)+'Wine'+chr(92)+'AppDefaults'+chr(92)+'SketchUp.exe', 'Version', '"win10"')
 set_value('Software'+chr(92)+'Wine'+chr(92)+'DllOverrides', 'ucrtbase', '"native,builtin"')
+set_value('Software'+chr(92)+'Wine'+chr(92)+'X11 Driver', 'ClientSideGraphics', '"N"')
 # CEF and Qt must agree on DPI before creating their first window.
 text += '\n[Software\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\AppCompatFlags\\\\Layers]\n@="HIGHDPIAWARE"\n'
 reg.write_text(text)
@@ -97,5 +98,6 @@ critical = [root/'app/SketchUp.exe', root/'app/msvcp140.dll',
     'files': {str(f.relative_to(root)): {'sha256': hashlib.sha256(f.read_bytes()).hexdigest(),
                                       'bytes': f.stat().st_size} for f in critical}
 }, indent=2))
+subprocess.run(['python3', str(P(__file__).with_name('build-popup-helper.py')), '--root', str(root)], check=True)
 subprocess.run([str(root/'bin/launch-sketchup.py'), '--check'], check=True)
 print('Prepared. Launch SketchUp and personally review its terms and license prompts. No desktop shortcut was changed.')

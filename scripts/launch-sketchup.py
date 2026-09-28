@@ -5,6 +5,7 @@ import datetime
 import fcntl
 import json
 import hashlib
+import importlib.util
 import os
 from pathlib import Path
 import shutil
@@ -88,7 +89,32 @@ def environment(root, log, debug=False):
         'PROTON_LOG': '1', 'PROTON_LOG_DIR': str(log),
         'WINEDEBUG': '-all,err+all,+seh,+loaddll' if debug else '-all,err+all',
     })
+    isolation = root/'candidate-isolation.json'
+    if isolation.is_file():
+        protected = json.loads(isolation.read_text())['protected_readonly']
+        if any(':' in path for path in protected):
+            raise ValueError('Colon in a protected path is unsupported')
+        env['PRESSURE_VESSEL_FILESYSTEMS_RO'] = ':'.join(protected)
+    if debug:
+        env['AAG_POPUP_TRACE'] = str(log/'popup-events.log')
     return env
+
+
+def check_popup_support(root):
+    support = root/'bin/runtime-exec.py'
+    if not support.is_file():
+        raise ValueError('Missing private runtime entry helper: ' + str(support))
+    source = Path(__file__).with_name('runtime-exec.py')
+    spec = importlib.util.spec_from_file_location('aag_runtime_entry', source)
+    module = importlib.util.module_from_spec(spec)
+    previous = sys.dont_write_bytecode
+    try:
+        sys.dont_write_bytecode = True
+        spec.loader.exec_module(module)
+    finally:
+        sys.dont_write_bytecode = previous
+    module.helper_environment(root, {})
+    return 'CONFIGURED' if (root/'config/popup-present.json').is_file() else 'BASE_WITHOUT_PAINTING_HELPER'
 
 
 def main():
@@ -100,6 +126,9 @@ def main():
     parser.add_argument('model', nargs='?', type=Path)
     args = parser.parse_args()
     root = args.root.expanduser().resolve()
+    unit = UNIT
+    if (root/'candidate-isolation.json').is_file():
+        unit = 'aag-sketchup-candidate-' + hashlib.sha256(str(root).encode()).hexdigest()[:12] + '.service'
     prefix = root/'compatdata'
     app = root/'app/SketchUp.exe'
     proton = root/'runtime'/PROTON/'proton'
@@ -119,17 +148,18 @@ def main():
                      prefix/'pfx/drive_c/windows/system32/user32.dll']:
         if hashlib.sha256(wine_dll.read_bytes()).hexdigest() != '4e1251c8074cef40260caf36a9c84db42be33400af88a15c39fa5f638c42df65':
             raise ValueError('The validated Wine touch compatibility fix is missing: ' + str(wine_dll))
+    popup_support = check_popup_support(root)
     if args.check:
-        print(json.dumps({'root': str(root), 'architecture': 'x86-64', 'required_files': 'PASS'}))
+        print(json.dumps({'root': str(root), 'architecture': 'x86-64', 'required_files': 'PASS', 'popup_support': popup_support}))
         return 0
     model = args.model.expanduser().resolve() if args.model else None
     if model is not None and not model.is_file():
         raise ValueError('The selected model does not exist: ' + str(model))
     runtime_dir = Path(os.environ.get('XDG_RUNTIME_DIR', '/run/user/' + str(os.getuid())))
-    with (runtime_dir/'aag-sketchup-2026.lock').open('w') as lock:
+    with (runtime_dir/(unit.removesuffix('.service')+'.lock')).open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         pids = processes(prefix)
-        active = run(['systemctl', '--user', 'is-active', UNIT]).stdout.strip()
+        active = run(['systemctl', '--user', 'is-active', unit]).stdout.strip()
         if pids or active in ('active', 'activating', 'deactivating'):
             if not focus(pids):
                 notify('SketchUp is still starting or closing. Try again in a moment.')
@@ -140,17 +170,18 @@ def main():
         log = root/'logs'/stamp
         log.mkdir(parents=True)
         env = environment(root, log, args.debug)
-        cmd = [str(container), '--verb=run', '--', str(proton), 'run',
+        cmd = [str(container), '--verb=run', '--', '/usr/bin/python3',
+               str(root/'bin/runtime-exec.py'), str(root), str(proton), 'run',
                'Z:' + str(app).replace('/', chr(92))]
         if model is not None:
             cmd.append('Z:' + str(model).replace('/', chr(92)))
-        manifest = {'unit': UNIT, 'log': str(log), 'root': str(root),
+        manifest = {'unit': unit, 'log': str(log), 'root': str(root),
                     'start': datetime.datetime.now().isoformat(), 'command': cmd,
                     'environment': env, 'max_seconds': 'infinity', 'debug': args.debug,
                     'proton_version': PROTON}
         (log/'manifest.json').write_text(json.dumps(manifest, indent=2))
         (root/'logs/current.json').write_text(json.dumps(manifest, indent=2))
-        argv = ['systemd-run', '--user', '--collect', '--unit=' + UNIT,
+        argv = ['systemd-run', '--user', '--collect', '--unit=' + unit,
                 '--property=RuntimeMaxSec=infinity', '--property=TimeoutStopSec=8',
                 '--property=KillMode=control-group', '--property=ExitType=cgroup',
                 '--property=Restart=no', '--property=WorkingDirectory=' + str(root/'app'),
@@ -158,6 +189,7 @@ def main():
                 '--property=StandardError=append:' + str(log/'console.log')]
         argv += ['--setenv=' + key + '=' + value for key, value in env.items()]
         argv += ['/usr/bin/env', '-u', 'WAYLAND_DISPLAY', '-u', 'WINEPREFIX',
+                 '-u', 'LD_PRELOAD', '-u', 'LD_LIBRARY_PATH',
                  '-u', 'SU_CEF_DBG_PORT', '-u', 'QT_PLUGIN_PATH',
                  '-u', 'QT_SCALE_FACTOR', '-u', 'QT_SCREEN_SCALE_FACTORS', *cmd]
         result = run(argv)

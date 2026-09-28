@@ -161,3 +161,10 @@ systemctl --user status aag-sketchup-2026.service
 ```
 
 A closed application should leave no processes for its prefix. Other Wine applications may legitimately remain running. Use [the acceptance matrix](TEST-MATRIX.md) and [troubleshooting](TROUBLESHOOTING.md). Reboot/logout is optional only after saving all work; the installed paths and desktop files must be persistent.
+
+## Popup painting support
+
+The current support build also needs a C compiler, binutils and X11/XCB/XRender
+development headers (`build-essential binutils libx11-dev libxcb1-dev libxrender-dev`
+on Ubuntu). Preparation builds the original local popup helper; no vendor
+DLL is modified for this fix. See [window painting](WINDOW-PAINTING.md) for scope, tests and rollback.

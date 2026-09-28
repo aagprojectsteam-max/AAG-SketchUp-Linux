@@ -37,3 +37,7 @@ Preserved a full rollback and original media; relocated runtime out of Steam; re
 - Passed actual mouse modeling, save/reopen, Apps/Dock/focus, window restore/maximize and three final cold launches.
 - Restored Input Lock, pointer settings and YAWMS functionality; archived temporary probes and stale mappings.
 - Created and verified the final rollback snapshot; prepared a sanitized, reproducible public release.
+
+## Plugin Golden — 2026-09-28
+
+Add four reviewed extension groups and scoped first-paint/focus repairs, with repeated GUI/function regression. Add audited migration tools, metadata and a verified independent plugin backup. See [release report](PLUGIN-MIGRATION-REPORT.md).

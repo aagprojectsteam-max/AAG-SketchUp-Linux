@@ -42,3 +42,10 @@ python3 "$SKETCHUP_ROOT/bin/install-launcher.py" --root "$SKETCHUP_ROOT"
 ```
 
 Open **SketchUp 2026** in GNOME Apps and pin that entry to the Dock. Test a new model, selection/drawing, orbit/pan/zoom, save/reopen and normal close. No Steam client or sudo is needed for everyday launching. Keep a [rollback copy](docs/UNINSTALL-ROLLBACK.md) and review [known limitations](README.md#limits).
+
+## Popup painting support
+
+The current support build also needs a C compiler, binutils and X11/XCB/XRender
+development headers (`build-essential binutils libx11-dev libxcb1-dev libxrender-dev`
+on Ubuntu). Preparation builds the original local popup helper; no vendor
+DLL is modified for this fix. See [window painting](docs/WINDOW-PAINTING.md) for scope, tests and rollback.
