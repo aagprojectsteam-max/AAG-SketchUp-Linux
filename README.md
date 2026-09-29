@@ -81,3 +81,7 @@ assumed compatible.
 This validates basic local modeling on one recorded configuration. Cloud sign-in/licensing for another account, untested third-party extension features, LayOut, printing and large production workloads are untested. Unsupported direct touch is safely rejected; multitouch gestures are not implemented. Maximize/restore work; the tested fullscreen request was ignored. No reboot/logout test was performed. Changes to SketchUp, Wine, Mesa or GNOME require a new regression run.
 
 This community procedure does not imply official Trimble Linux support. The MIT license applies to the original support code/documentation, not proprietary or third-party installation material.
+
+## Hebrew keyboard input
+
+The launcher now repairs the verified GNOME/Xwayland US-only map mismatch when US and Hebrew are already configured. Live bilingual input works in SketchUp Qt, CEF and tested plugin fields. See [Hebrew input](docs/HEBREW-INPUT.md) for scope, evidence and rollback.

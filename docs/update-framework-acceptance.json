@@ -98,5 +98,16 @@
     "skipped": 0,
     "future_release_networking": "REQUIRES_REAL_VALIDATION",
     "report": "NETWORKING.md"
+  },
+  "hebrew_input_maintenance": {
+    "validated_date": "2026-09-29",
+    "mandatory_gate_omission_test": "PASS",
+    "keyboard_scope_and_rollback_tests": "PASS",
+    "automated_tests": 62,
+    "passed": 62,
+    "skipped": 0,
+    "future_release_bilingual_input": "REQUIRES_REAL_VALIDATION",
+    "report": "HEBREW-INPUT.md",
+    "candidate_map_scope": "CURRENT_SHARED_XWAYLAND_DISPLAY"
   }
 }

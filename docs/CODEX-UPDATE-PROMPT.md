@@ -94,3 +94,7 @@ Optional service terms/login remain USER_ACTION_DEFERRED unless core-required or
 explicitly requested. Never repeat a valid login merely to obtain a new screenshot.
 Record service limitations honestly and remove all temporary listeners/debugging.
 No private CA, browser, credential or session material may enter the public tree.
+
+### Preserve bilingual input
+
+Require normal US/Hebrew switching, exact Unicode in Qt and CEF, English shortcuts after switching back, a new Hebrew filename and model-text save/reopen, pointer accuracy, and Hebrew input after both Apps and Dock cold launches. Inspect the current Xwayland map if the indicator and typed text disagree. Never reset account state or overwrite a custom map blindly. The supported map repair is shared by X11 applications on the current display.

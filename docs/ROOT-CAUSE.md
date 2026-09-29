@@ -139,3 +139,7 @@ SketchUp then independently reset embedded Ruby's SSL_CERT_FILE to its vendor
 bundle; a prefix-local bootstrap repaired Ruby's default store. See the complete
 [network comparison, callback and failed-experiment record](NETWORKING.md).
 No application binary or vendor CA file was patched for networking.
+
+## Post-Golden Hebrew input, 2026-09-29
+
+A native Wayland application received Hebrew while Xwayland GTK and a plain Wine EDIT received Latin under the same Hebrew IBus engine. Xwayland had only the US map. Changing that map to the existing GNOME US/Hebrew pair fixed the same running Wine process; restoring the old map reproduced failure. The origin of the divergence is unknown. A guarded launcher helper restores the existing bilingual map and active group. [Evidence and boundaries](HEBREW-INPUT.md).

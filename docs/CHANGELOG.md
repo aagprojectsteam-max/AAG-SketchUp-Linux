@@ -49,3 +49,10 @@ Add read-only PE/content/runtime diffing, isolated fresh candidates, conditional
 ## 2026-09-29 networking support
 
 Added private host CA propagation, a prefix-local Ruby bootstrap, proxy-log redaction, native probe sources and network/account requirements for future updates. Core account/networking and three final cold runs passed; 54 automated tests passed. [Results and limits](NETWORKING.md).
+
+## 2026-09-29 — Bilingual input
+
+- Repair the demonstrated US-only Xwayland map using existing GNOME US/Hebrew sources, preserving the selected source.
+- Back up map/rules before repair and restore them on verification failure.
+- Add mandatory bilingual, Hebrew filename and Apps/Dock input gates to future updates.
+- Document Unicode, RTL, saved model text, keyboard shortcut and post-input networking regression.

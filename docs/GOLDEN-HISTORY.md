@@ -35,3 +35,7 @@ rollback reference. Keep private paths in local records. Add a sanitized
 ## Networking support maintenance
 
 The 2026-09-29 maintenance change adds secure host-trust integration and verified core sign-in/persistence to the same app/runtime. It preserves both historical tags and independent backups. It does not create an application-upgrade tag. See [networking results](NETWORKING.md) and the [gate record](network-acceptance.json), including optional service limitations.
+
+## 2026-09-29 — Hebrew input maintenance
+
+Added a conditional shared-Xwayland map repair and mandatory bilingual update gates. Networking and original binary/content baselines remain preserved. No historical Base/Plugin tag is moved. See [the input investigation](HEBREW-INPUT.md) and [current matrix](hebrew-input-acceptance.json).

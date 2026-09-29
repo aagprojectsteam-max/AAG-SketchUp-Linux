@@ -215,3 +215,16 @@ For a negative TLS test, serve a disposable self-signed certificate only on
 failure in the host, container, Wine and Ruby. Stop the server and verify the
 listener is absent. Keep its key/certificate and output private. Never substitute
 an external interception service or disable verification to make the test pass.
+
+## Subsequent Hebrew-input regression
+
+The input repair preserved the authenticated session and secure networking. Fresh probes returned verified Ruby HTTPS results for example.com (200), SketchUp (301) and SketchUcation (200), SketchUp HTTP API 200, and an HTTPS Example Domain HtmlDialog callback. TLS verification stayed enabled and the existing host-trust bootstrap was applied. The plugin online form loaded again without submitting credentials or accepting terms. [Hebrew regression](HEBREW-INPUT.md) supplies the associated cold-launch/input evidence. Optional service outcomes above remain unchanged.
+
+## Bundled extension version drift
+
+The final integrity audit found Add Location 1.8.6 and AI Assistant 1.0.5 in the
+current prefix, versus 1.8.2 and 1.0.3 in the protected Plugin Golden. Their change
+timestamps predate the Hebrew task and fall near the beginning of this networking
+session. The exact update mechanism is not established. Migrated third-party
+plugin code remains unchanged. [Current plugin inventory and limits](PLUGINS.md)
+record this separately from the unchanged application/runtime binary hashes.

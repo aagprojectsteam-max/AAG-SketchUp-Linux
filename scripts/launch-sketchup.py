@@ -187,6 +187,8 @@ def main():
         stamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')
         log = root/'logs'/stamp
         log.mkdir(parents=True)
+        import runpy
+        keyboard = runpy.run_path(str(Path(__file__).with_name('keyboard-environment.py')))['prepare'](log)
         env = environment(root, log, args.debug)
         cmd = [str(container), '--verb=run', '--', '/usr/bin/python3',
                str(root/'bin/runtime-exec.py'), str(root), str(proton), 'run',
@@ -196,7 +198,7 @@ def main():
         manifest = {'unit': unit, 'log': str(log), 'root': str(root),
                     'start': datetime.datetime.now().isoformat(), 'command': cmd,
                     'environment': receipt_environment(env), 'max_seconds': 'infinity', 'debug': args.debug,
-                    'proton_version': PROTON}
+                    'proton_version': PROTON, 'keyboard': keyboard}
         (log/'manifest.json').write_text(json.dumps(manifest, indent=2))
         (root/'logs/current.json').write_text(json.dumps(manifest, indent=2))
         argv = ['systemd-run', '--user', '--collect', '--unit=' + unit,

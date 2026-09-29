@@ -141,3 +141,7 @@ FULLSCREEN=NOT_SUPPORTED_BY_TESTED_WINDOW_MANAGER_REQUEST
 ## Networking maintenance regression, 2026-09-29
 
 The separate [network acceptance record](network-acceptance.json) covers core HTTPS, callback/account persistence, observed service scopes, three final cold runs, six-face test-model reopen, input/graphics and compositor painting. Historical tool/modeling acceptance above is preserved; networking probes do not claim to repeat every historical drawing tool test.
+
+## Hebrew input maintenance
+
+See [the bilingual matrix](hebrew-input-acceptance.json) and [evidence](HEBREW-INPUT.md). Qt, CEF, model text, filenames and actual modeling/navigation were tested. Three cold launches and clean closes passed; historical Golden gates remain scoped to their releases.

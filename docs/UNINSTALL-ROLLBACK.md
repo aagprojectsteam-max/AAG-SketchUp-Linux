@@ -83,3 +83,7 @@ The complete historical Plugin Golden remains an independent recovery option.
 A full old-prefix restore can remove newer account state; sign in legitimately
 again if needed. Never copy Windows session or licensing data. See
 [NETWORKING.md](NETWORKING.md) for the precise scope and limitations.
+
+## Hebrew input maintenance rollback
+
+Restore the backed-up pre-input launcher without resetting the authenticated prefix. The keyboard map backup belongs to one Xwayland display and launch; review its rules before restoring it. Returning the original US-only map reproduces the Hebrew fault. See the exact procedure and scope in [HEBREW-INPUT.md](HEBREW-INPUT.md).

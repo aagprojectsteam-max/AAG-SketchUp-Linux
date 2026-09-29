@@ -341,5 +341,18 @@
     "private_trust_policy": "Generated from existing host bundle at launch; not distributed",
     "historical_tags": "UNCHANGED",
     "notes": "Original binary/content baseline retained; session state and CA material excluded."
+  },
+  "hebrew_input_maintenance": {
+    "validated_date": "2026-09-29",
+    "acceptance": "docs/hebrew-input-acceptance.json",
+    "support_sources": {
+      "launch-sketchup.py": "7e31d25317ec718a7c955ec9f9eca393869557fc2cee50369dbaa8d864d966a4",
+      "keyboard-environment.py": "bb6243d4afb1539e321b383603990243e02be4341cd7ead7de6c8592dac4688b",
+      "prepare-update.py": "c3565ec29703aefacb17c4463d903ea3e929bbf1da634fb20569777c57e47f81"
+    },
+    "scope": "Conditional repair of the current shared Xwayland map; existing GNOME sources preserved",
+    "historical_tags": "UNCHANGED",
+    "private_reports": "EXCLUDED_FROM_GIT",
+    "bundled_extension_drift_review": "docs/PLUGINS.md"
   }
 }

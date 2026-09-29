@@ -118,3 +118,9 @@ Service-specific outcomes remain separate: Connect can require its own terms;
 Generate Report can show a host filtering-policy block; Add Location address
 search can work while its map fails WebGL initialization. Do not remove the
 validated CEF GPU setting or bypass network policy merely to hide these limits.
+
+## GNOME shows Hebrew but SketchUp still types English
+
+Compare `ibus engine`, GNOME input sources and the actual map from `xkbcomp -xkb "$DISPLAY" -`. In the reproduced failure GNOME selected Hebrew while Xwayland contained US symbols only; native Wayland worked and plain X11 also failed. The canonical launcher now repairs this exact mismatch once per cold start. Verify real Unicode input and live switching; the indicator and Wine HKL alone are insufficient.
+
+See [HEBREW-INPUT.md](HEBREW-INPUT.md) for diagnostic commands, supported-map guards, private map backups and rollback. Preserve account state and avoid blind keyboard registry edits. Mixed RTL alignment is a separate application display limitation.

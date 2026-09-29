@@ -182,3 +182,7 @@ network trust. Correct the host configuration; do not fall back to disabled TLS.
 Restart after a host trust change. Sign in personally using the normal default
 browser, then check SketchUp's account menu and a clean relaunch. See
 [NETWORKING.md](NETWORKING.md) for exact tested APIs, callback behavior and limits.
+
+## GNOME Hebrew input support
+
+Keep the existing GNOME US/Hebrew input sources. Install host `x11-xkb-utils` and `x11-utils`, with IBus and libX11 available. The preparation script copies `keyboard-environment.py` beside the launcher. It conditionally aligns the current shared Xwayland map with those existing sources; it does not rewrite GNOME settings. Test live switching, Hebrew filenames and both desktop launchers as described in [HEBREW-INPUT.md](HEBREW-INPUT.md).

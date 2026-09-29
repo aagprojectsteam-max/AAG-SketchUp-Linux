@@ -32,9 +32,11 @@ MENU_FIRST_PAINT TOOLBAR_POPUP_PAINT PLUGIN_DIALOG_FIRST_PAINT PLUGIN_DIALOG_FOC
 MAXIMIZE_RESTORE TOUCH_CRASH_CHECK TOUCHPAD_NAVIGATION NATIVE_VIEWPORT_RESOLUTION
 PERFORMANCE_REVIEW FILE_FORMAT_REVIEW ROLLBACK_READY CONTENT_VERSION_REVIEW
 COMPATIBILITY_REVIEW GENERAL_HTTPS TLS_NEGATIVE_TEST RUBY_HTTPS CEF_HTML_CALLBACK
-BROWSER_CALLBACK ACCOUNT_PERSISTENCE OPTIONAL_ONLINE_SERVICE_REVIEW PLUGIN_HTTPS_REVIEW'''.split()
+BROWSER_CALLBACK ACCOUNT_PERSISTENCE OPTIONAL_ONLINE_SERVICE_REVIEW PLUGIN_HTTPS_REVIEW
+ENGLISH_INPUT HEBREW_INPUT LIVE_LANGUAGE_SWITCH ENGLISH_SHORTCUTS HEBREW_FILENAME
+HEBREW_SAVE_REOPEN CEF_HEBREW_INPUT PLUGIN_HEBREW_REVIEW HEBREW_AFTER_COLD_LAUNCH'''.split()
 DESKTOP_GATES = '''APPS_LAUNCH DOCK_LAUNCH DOCK_FOCUS_EXISTING CORRECT_ICON
-CORRECT_WINDOW_MATCHING NO_DUPLICATE_DOCK_ICON'''.split()
+CORRECT_WINDOW_MATCHING NO_DUPLICATE_DOCK_ICON APPS_HEBREW_INPUT DOCK_HEBREW_INPUT'''.split()
 
 
 def now(): return datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -300,7 +302,7 @@ def create(m):
             shutil.copytree(Path(m['sources']['runtime'])/directory,root/'runtime'/directory,symlinks=True,
                             ignore=shutil.ignore_patterns('var','__pycache__'))
         require(runtime_audit(root/'runtime')['files']==m['runtime']['files'],'Runtime copy hash mismatch')
-        for name in ('prepare-update.py','pe_metadata.py','patch-wine-touch.py','network-environment.py','network-trust.rb'):
+        for name in ('prepare-update.py','pe_metadata.py','patch-wine-touch.py','network-environment.py','keyboard-environment.py','network-trust.rb'):
             shutil.copy2(Path(__file__).with_name(name),root/'bin'/name)
         shutil.copy2(REPO/'config/compatibility-rules.json',root/'config/compatibility-rules.json')
         (root/'bin/launch-sketchup.py').write_text('#!/usr/bin/env python3\nimport runpy,sys\nfrom pathlib import Path\nr=Path(__file__).resolve().parents[1]\na=runpy.run_path(str(r/"bin/prepare-update.py"))\na["launch"](r, Path(sys.argv[1]) if len(sys.argv)>1 else None)\n')
@@ -458,6 +460,11 @@ def launch(root,model=None):
                     subprocess.run(['wmctrl','-ia',fields[0]],check=True)
             return
         require(subprocess.run(['systemctl','--user','is-active','--quiet',unit]).returncode!=0,'Candidate unit still active')
+        import runpy
+        keyboard_log=root/'logs/updates'/('keyboard-'+datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f'))
+        keyboard_log.mkdir(mode=0o700)
+        keyboard=runpy.run_path(str(Path(__file__).with_name('keyboard-environment.py')))['prepare'](keyboard_log)
+        save(keyboard_log/'result.json',keyboard)
         tail=[]
         if model:
             model=model.resolve(strict=True);tail=['--runtime-argument','Z:'+str(model).replace('/',chr(92))]

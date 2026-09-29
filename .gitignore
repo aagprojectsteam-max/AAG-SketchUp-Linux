@@ -89,3 +89,11 @@
 !/tests/network-wininet.c
 
 !/docs/network-acceptance.json
+
+# Original bilingual input support and synthetic regression sources only.
+!/scripts/keyboard-environment.py
+!/tests/test_keyboard_environment.py
+!/docs/hebrew-input-acceptance.json
+!/tests/input-win32.c
+!/tests/input-gtk.py
+!/tests/input-sketchup.rb

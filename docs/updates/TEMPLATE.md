@@ -58,3 +58,7 @@ handling and loopback callback; SketchUp account UI and cold-launch persistence.
 Record each optional service and compatible plugin separately, including policy
 blocks, legal deferrals and graphics limitations. Confirm no diagnostic listeners,
 proxies, debug ports, auth/session data or CA bundles enter the release.
+
+### Bilingual acceptance
+
+Record English/Hebrew/live switching, Unicode/codepoints, Qt/CEF/plugin field scope, English shortcuts after switching, new Hebrew file/model text save/reopen, Apps/Dock cold starts and pointer accuracy. Record initial-source preservation and any RTL display limitation separately.

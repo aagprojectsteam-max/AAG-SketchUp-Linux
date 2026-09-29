@@ -38,6 +38,8 @@ ALLOWED.update({
     'tests/update-model.rb',
 })
 ALLOWED.update({'docs/network-acceptance.json', 'tests/network-probe.c', 'tests/network-wininet.c', 'docs/NETWORKING.md', 'scripts/network-environment.py', 'tests/test_network_environment.py', 'scripts/network-trust.rb'})
+ALLOWED.update({'scripts/keyboard-environment.py', 'tests/test_keyboard_environment.py', 'docs/HEBREW-INPUT.md', 'docs/hebrew-input-acceptance.json'})
+ALLOWED.update({'tests/input-win32.c', 'tests/input-gtk.py', 'tests/input-sketchup.rb'})
 PATTERNS = {
     'certificate material': r'-----BEGIN (?:TRUSTED )?CERTIFICATE-----',
     'credential token': r'\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16})\b',

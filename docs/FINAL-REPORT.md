@@ -55,3 +55,7 @@ No reboot/logout was coordinated. Persistent paths and three cold launches were 
 ## Subsequent networking acceptance, 2026-09-29
 
 Core account/browser-callback/persistence and general secure Internet checks now pass in their recorded scopes. The original report above remains the historical Base acceptance. See [NETWORKING.md](NETWORKING.md) for current service outcomes, three additional cold runs, cleanup, the earlier diagnostic failure, and the unchanged graphics/input/painting configuration.
+
+## Hebrew input maintenance, 2026-09-29
+
+The confirmed Xwayland map mismatch is repaired by a guarded cold-launch helper. Actual Unicode Hebrew, live switching, saved model text and filenames passed, alongside GUI modeling/navigation and preserved secure networking. Apps and Dock input passed. See [HEBREW-INPUT.md](HEBREW-INPUT.md) for exact surface/toolkit coverage, partial mixed RTL rendering and the nonfatal Xalia log exception. [The current matrix](hebrew-input-acceptance.json) records three cold runs of about 309, 562 and 602 seconds, clean closes and zero remaining prefix processes. The complete input/model/network regression passed; 62 automated tests passed without skips.

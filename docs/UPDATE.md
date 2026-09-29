@@ -354,3 +354,16 @@ normal browser callback and clean relaunches. Keep listeners loopback-only;
 remove diagnostic servers afterward. Retest painting/DPI/hardware acceleration.
 Never publish CA bundles, auth URLs, cookies, tokens, prefix or account screenshots.
 The historical application tags are immutable; tooling updates do not retag them.
+
+## Mandatory bilingual input gates
+
+Before promotion, validate `ENGLISH_INPUT`, `HEBREW_INPUT`, `LIVE_LANGUAGE_SWITCH`, `ENGLISH_SHORTCUTS`, `HEBREW_FILENAME`, `HEBREW_SAVE_REOPEN`, `CEF_HEBREW_INPUT`, `PLUGIN_HEBREW_REVIEW` and `HEBREW_AFTER_COLD_LAUNCH`. Existing `POINTER_ACCURACY` remains mandatory. Post-promotion requires separate `APPS_HEBREW_INPUT` and `DOCK_HEBREW_INPUT`. A plugin review may conclude no safe field is available, but must record that scope; do not activate deferred plugins just for this test.
+
+Candidate launchers carry the same conditional keyboard helper. This acts on the current shared Xwayland display, including for isolated prefixes. It must not be described as prefix-only isolation. See [HEBREW-INPUT.md](HEBREW-INPUT.md).
+
+Re-inventory bundled extensions after enabling or testing online services.
+Add Location and AI Assistant version drift was observed during the networking
+maintenance even though the migrated plugin code was unchanged. Preserve that
+distinction and review current versions before attributing all changes to a
+SketchUp or Proton update. The protected historical Plugin Golden remains the
+rollback reference.

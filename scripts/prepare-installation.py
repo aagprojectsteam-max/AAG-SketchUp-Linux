@@ -42,7 +42,7 @@ shutil.copy2(a.msvcp_x64, root/'app/msvcp140.dll')
 subprocess.run(['python3', str(P(__file__).with_name('patch-wine-touch.py')),
                 str(root/'runtime/GE-Proton10-25/files/lib/wine/x86_64-windows/user32.dll')], check=True)
 (root/'config/fontconfig.conf').write_text('<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n<fontconfig>\n  <include ignore_missing="yes">/etc/fonts/fonts.conf</include>\n  <selectfont><rejectfont>\n    <glob>/usr/share/fonts/noto-emoji/NotoColorEmoji.ttf</glob>\n    <glob>/run/host/fonts/truetype/noto/NotoColorEmoji.ttf</glob>\n    <glob>/run/host/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf</glob>\n  </rejectfont></selectfont>\n</fontconfig>\n')
-for name in ['launch-sketchup.py', 'network-environment.py', 'runtime-exec.py', 'install-launcher.py', 'collect-diagnostics.py']:
+for name in ['launch-sketchup.py', 'network-environment.py', 'keyboard-environment.py', 'runtime-exec.py', 'install-launcher.py', 'collect-diagnostics.py']:
     source = P(__file__).with_name(name)
     if source.exists():
         shutil.copy2(source, root/'bin'/name)

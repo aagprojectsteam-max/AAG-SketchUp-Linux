@@ -52,6 +52,17 @@ class UpdateTests(unittest.TestCase):
                     else:e['base_gates'][gate]=value
                     with self.assertRaisesRegex(ValueError, 'have not all passed'):u.validate(m,e,'base')
                     self.assertEqual(m['state'],'BASE_TESTING')
+    def test_bilingual_regression_cannot_be_omitted_or_deferred(self):
+        for gate in ('ENGLISH_INPUT', 'HEBREW_INPUT', 'LIVE_LANGUAGE_SWITCH', 'ENGLISH_SHORTCUTS',
+                     'HEBREW_FILENAME', 'HEBREW_SAVE_REOPEN', 'CEF_HEBREW_INPUT',
+                     'PLUGIN_HEBREW_REVIEW', 'HEBREW_AFTER_COLD_LAUNCH'):
+            for value in (None, 'NOT_TESTED', 'FAIL', 'USER_ACTION_DEFERRED'):
+                with self.subTest(gate=gate, value=value):
+                    m=self.model();e=self.evidence(m)
+                    if value is None:e['base_gates'].pop(gate)
+                    else:e['base_gates'][gate]=value
+                    with self.assertRaisesRegex(ValueError, 'have not all passed'):u.validate(m,e,'base')
+                    self.assertEqual(m['state'],'BASE_TESTING')
     def test_actual_string_version_over_fixed_header(self):
         x=inspect_pe(pe_file(self.base/'app.exe'));self.assertEqual(x['file_version'],'26.0.0.0');self.assertEqual(u.version(x),'26.1.252')
     def test_version_conflict_and_missing(self):

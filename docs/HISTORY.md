@@ -77,3 +77,7 @@ The [update framework report](UPDATE-FRAMEWORK-REPORT.md) records its current-Go
 ## 2026-09-29: secure networking maintenance
 
 Host/container and Windows comparisons established missing host trust propagation. Embedded Ruby required a separate default-store bootstrap. The user completed legitimate browser sign-in; account persistence, secure HTTPS and final cold regressions passed. Optional service limits and the earlier unresolved instrumented X_CopyArea failure remain in [NETWORKING.md](NETWORKING.md). No historical tag was moved.
+
+## 2026-09-29 — Hebrew input maintenance
+
+Isolated the failure at the native Wayland/Xwayland boundary, performed a same-process Wine A/B/reversal, and added a conditional shared-Xwayland map repair. Verified actual Unicode in Qt, CEF and saved model text; tested GUI modeling and new Hebrew filenames. The networking work and immutable Base/Plugin tags remain preserved. [Full investigation and incomplete test attempts](HEBREW-INPUT.md).
