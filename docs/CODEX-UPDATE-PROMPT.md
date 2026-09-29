@@ -83,3 +83,14 @@ plugin matrix; reused/removed/new fixes; GUI/graphics/input/painting gates;
 performance limits; backward file compatibility; exact active/rollback roots;
 promotion or rejection; retained evidence/cleanup scope; commit/tag/remote and
 WORKTREE_CLEAN. Do not claim future compatibility or fill unobserved GUI gates.
+
+## Networking requirement for future sessions
+
+Include `docs/NETWORKING.md` in the initial reading. Run the mandatory core network
+and account gates from `docs/UPDATE.md`, including a negative TLS test. Reevaluate
+both host-to-container/Wine trust and SketchUp's embedded Ruby store after version
+changes. Preserve the normal default-browser bridge and host DNS/filter policy.
+Optional service terms/login remain USER_ACTION_DEFERRED unless core-required or
+explicitly requested. Never repeat a valid login merely to obtain a new screenshot.
+Record service limitations honestly and remove all temporary listeners/debugging.
+No private CA, browser, credential or session material may enter the public tree.

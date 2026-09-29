@@ -73,3 +73,7 @@ The [plugin report](PLUGIN-MIGRATION-REPORT.md) and [painting investigation](WIN
 ## Future update preparation
 
 The [update framework report](UPDATE-FRAMEWORK-REPORT.md) records its current-Golden self-test and implementation corrections. The protected application state remains the Plugin Golden; tooling is a separate later commit.
+
+## 2026-09-29: secure networking maintenance
+
+Host/container and Windows comparisons established missing host trust propagation. Embedded Ruby required a separate default-store bootstrap. The user completed legitimate browser sign-in; account persistence, secure HTTPS and final cold regressions passed. Optional service limits and the earlier unresolved instrumented X_CopyArea failure remain in [NETWORKING.md](NETWORKING.md). No historical tag was moved.

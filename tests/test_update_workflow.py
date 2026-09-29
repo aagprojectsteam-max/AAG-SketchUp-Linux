@@ -42,6 +42,16 @@ class UpdateTests(unittest.TestCase):
         u.store(m);return m
     def evidence(self,m):
         e=u.regression_template(m);e['reviewer']='local test reviewer';e['evidence']=['disposable test fixture'];e['base_gates']=dict.fromkeys(u.BASE_GATES,'PASS');return e
+    def test_network_regression_cannot_be_omitted_or_deferred(self):
+        for gate in ('GENERAL_HTTPS', 'TLS_NEGATIVE_TEST', 'RUBY_HTTPS', 'CEF_HTML_CALLBACK',
+                     'BROWSER_CALLBACK', 'ACCOUNT_PERSISTENCE', 'OPTIONAL_ONLINE_SERVICE_REVIEW', 'PLUGIN_HTTPS_REVIEW'):
+            for value in (None, 'NOT_TESTED', 'FAIL', 'USER_ACTION_DEFERRED'):
+                with self.subTest(gate=gate, value=value):
+                    m=self.model();e=self.evidence(m)
+                    if value is None:e['base_gates'].pop(gate)
+                    else:e['base_gates'][gate]=value
+                    with self.assertRaisesRegex(ValueError, 'have not all passed'):u.validate(m,e,'base')
+                    self.assertEqual(m['state'],'BASE_TESTING')
     def test_actual_string_version_over_fixed_header(self):
         x=inspect_pe(pe_file(self.base/'app.exe'));self.assertEqual(x['file_version'],'26.0.0.0');self.assertEqual(u.version(x),'26.1.252')
     def test_version_conflict_and_missing(self):

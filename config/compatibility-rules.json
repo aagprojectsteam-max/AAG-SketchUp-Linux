@@ -19,6 +19,7 @@
     {"id": "dpi", "classification": "VERSION_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "192 DPI and HIGHDPIAWARE require Qt/CEF and pointer testing; prefer simpler settings if validated.", "evidence": "docs/GRAPHICS.md"},
     {"id": "graphics", "classification": "VERSION_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "Classic/MSAA8 only where supported; never silently substitute software rendering.", "evidence": "docs/GRAPHICS.md"},
     {"id": "popup-presentation", "classification": "RUNTIME_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "Wine/X11 raster and window styles are version dependent. Re-test helper eligibility, first paint and focus after framework/runtime changes.", "evidence": "docs/WINDOW-PAINTING.md"},
+    {"id": "host-network-trust", "classification": "RUNTIME_SPECIFIC", "action": "REQUIRES_REVIEW", "behavior": "Use existing host CA policy with TLS verification. Revalidate Wine host-root import and embedded Ruby default-store bootstrap after changes; require core network/account gates. Never transfer Windows credentials.", "evidence": "docs/NETWORKING.md"},
     {"id": "unknown-build", "classification": "UNKNOWN", "action": "REQUIRES_REVIEW", "behavior": "REQUIRES_AUDIT; generic preparation allowed, old fixes never applied blindly.", "evidence": "docs/UPDATE.md"}
   ]
 }

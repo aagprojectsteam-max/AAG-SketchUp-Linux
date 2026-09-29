@@ -44,6 +44,16 @@ and V-Ray are deferred by user choice. Supply your own legitimate extension file
 and licenses; none are redistributed. See the [migration report](docs/PLUGIN-MIGRATION-REPORT.md),
 [painting fix](docs/WINDOW-PAINTING.md) and [rollback delta](docs/PLUGIN-GOLDEN-DELTA.md).
 
+## Internet and account access
+
+The [networking report](docs/NETWORKING.md) records verified host/container/Wine,
+Ruby and CEF HTTPS, the normal browser callback, and SketchUp account persistence.
+Original support code propagates the existing host CA trust into the private
+runtime; certificate and hostname validation remain enabled. Sign in and handle
+legal agreements personally. Private trust bundles and session data stay local.
+Online services have separate outcomes: read the report before assuming a service
+or every plugin is fully supported.
+
 ## Future updates
 
 Use [UPDATE.md](docs/UPDATE.md) and the [reusable Codex handoff](docs/CODEX-UPDATE-PROMPT.md).

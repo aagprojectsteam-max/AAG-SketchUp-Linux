@@ -218,3 +218,7 @@ index is checked for proprietary binaries/archives, secrets and private paths.
 The final local receipt records pushed commit, remote equality and clean worktree.
 The [machine-readable matrix](update-framework-acceptance.json) records scope and
 technical gate results; future GUI acceptance is explicitly outside this self-test.
+
+## Networking maintenance regression, 2026-09-29
+
+Candidate preparation now carries the original trust helpers; exact-known configuration installs the Ruby bootstrap. Eight network/account/review gates are mandatory before base acceptance. A test rejects each missing, failed, untested or deferred core gate. All 54 current tests passed with zero skips; the historical 47-test self-test above remains its own dated result. Future application/runtime networking still requires actual validation. See [NETWORKING.md](NETWORKING.md).

@@ -49,3 +49,11 @@ The current support build also needs a C compiler, binutils and X11/XCB/XRender
 development headers (`build-essential binutils libx11-dev libxcb1-dev libxrender-dev`
 on Ubuntu). Preparation builds the original local popup helper; no vendor
 DLL is modified for this fix. See [window painting](docs/WINDOW-PAINTING.md) for scope, tests and rollback.
+
+## Secure networking
+
+Setup installs the original host-trust helper and the prefix-local Ruby bootstrap.
+The launcher requires a valid existing host CA bundle: `SSL_CERT_FILE` when set,
+otherwise OpenSSL's system bundle. It refreshes a private copy at startup. Do not
+import arbitrary certificates or disable verification. Sign in through your normal
+browser yourself; see [networking validation and limits](docs/NETWORKING.md).

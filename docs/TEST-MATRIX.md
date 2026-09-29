@@ -137,3 +137,7 @@ FINAL_BACKUP_VERIFIED=PASS
 SOFTWARE_RENDERING_FALLBACK=NO
 FULLSCREEN=NOT_SUPPORTED_BY_TESTED_WINDOW_MANAGER_REQUEST
 ```
+
+## Networking maintenance regression, 2026-09-29
+
+The separate [network acceptance record](network-acceptance.json) covers core HTTPS, callback/account persistence, observed service scopes, three final cold runs, six-face test-model reopen, input/graphics and compositor painting. Historical tool/modeling acceptance above is preserved; networking probes do not claim to repeat every historical drawing tool test.

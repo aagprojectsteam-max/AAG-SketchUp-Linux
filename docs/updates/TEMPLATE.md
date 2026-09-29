@@ -49,3 +49,12 @@ Separate demonstrated causes from hypotheses and invalid tests.
 Decision/state, old/new Golden, launcher journal, metadata consistency, new tag,
 verified remote, known limitations, production impact, retained evidence and
 cleanup disposition. Never move old tags or delete the only rollback.
+
+## Networking and account regression
+
+Host/container/Wine DNS and verified HTTPS; rejection of an untrusted certificate;
+Ruby/OpenSSL and native HTTP; CEF HTTPS/JavaScript/callback; normal browser URL
+handling and loopback callback; SketchUp account UI and cold-launch persistence.
+Record each optional service and compatible plugin separately, including policy
+blocks, legal deferrals and graphics limitations. Confirm no diagnostic listeners,
+proxies, debug ports, auth/session data or CA bundles enter the release.

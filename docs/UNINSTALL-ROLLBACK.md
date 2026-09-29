@@ -72,3 +72,14 @@ Use the verified snapshot and ownership receipts described in [PLUGIN-GOLDEN-DEL
 ## Future promoted candidates
 
 The [update workflow](UPDATE.md#rollback-and-rejection) changes explicit desktop entries while retaining both roots at their tested locations. Its private transaction journal stores exact before/after text for atomic replacement and recovery. Restore the matching documentation state as well; preserve all old Golden tags and check model file-format compatibility separately.
+
+## Networking-only rollback
+
+Save work and close SketchUp normally. Preserve a private copy of the current
+networking configuration before rollback. Restore the pre-networking launcher
+from its local snapshot and move only the receipt-owned `000_AAG_HostTrust.rb`
+out of the prefix's Plugins search path. Keep generated trust and evidence local.
+The complete historical Plugin Golden remains an independent recovery option.
+A full old-prefix restore can remove newer account state; sign in legitimately
+again if needed. Never copy Windows session or licensing data. See
+[NETWORKING.md](NETWORKING.md) for the precise scope and limitations.

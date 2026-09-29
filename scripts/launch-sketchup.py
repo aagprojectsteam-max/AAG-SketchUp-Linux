@@ -89,6 +89,15 @@ def environment(root, log, debug=False):
         'PROTON_LOG': '1', 'PROTON_LOG_DIR': str(log),
         'WINEDEBUG': '-all,err+all,+seh,+loaddll' if debug else '-all,err+all',
     })
+    network_source = Path(__file__).with_name('network-environment.py')
+    if network_source.is_file():
+        import runpy
+        previous = sys.dont_write_bytecode
+        try:
+            sys.dont_write_bytecode = True
+            env.update(runpy.run_path(str(network_source))['prepare'](root))
+        finally:
+            sys.dont_write_bytecode = previous
     isolation = root/'candidate-isolation.json'
     if isolation.is_file():
         protected = json.loads(isolation.read_text())['protected_readonly']
@@ -98,6 +107,15 @@ def environment(root, log, debug=False):
     if debug:
         env['AAG_POPUP_TRACE'] = str(log/'popup-events.log')
     return env
+
+
+def receipt_environment(env):
+    source = Path(__file__).with_name('network-environment.py')
+    if source.is_file():
+        import runpy
+        return runpy.run_path(str(source))['redact_environment'](env)
+    return {key: '[configured; value omitted]' if 'proxy' in key.lower() else value
+            for key, value in env.items()}
 
 
 def check_popup_support(root):
@@ -177,7 +195,7 @@ def main():
             cmd.append('Z:' + str(model).replace('/', chr(92)))
         manifest = {'unit': unit, 'log': str(log), 'root': str(root),
                     'start': datetime.datetime.now().isoformat(), 'command': cmd,
-                    'environment': env, 'max_seconds': 'infinity', 'debug': args.debug,
+                    'environment': receipt_environment(env), 'max_seconds': 'infinity', 'debug': args.debug,
                     'proton_version': PROTON}
         (log/'manifest.json').write_text(json.dumps(manifest, indent=2))
         (root/'logs/current.json').write_text(json.dumps(manifest, indent=2))

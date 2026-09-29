@@ -329,5 +329,17 @@
   "base_golden_commit": "f06aae42b0177ce8ffb4604b61d018c39287c44d",
   "plugin_golden_tag": "stable-sketchup-2026-ubuntu-plugins",
   "git_commit": "785b2e1ee921f055273f99221e34f6a084e22d46",
-  "source_policy": "User supplies legitimate files; metadata only; no license or proprietary payload"
+  "source_policy": "User supplies legitimate files; metadata only; no license or proprietary payload",
+  "networking_maintenance": {
+    "validated_date": "2026-09-29",
+    "acceptance": "docs/network-acceptance.json",
+    "support_sources": {
+      "launch-sketchup.py": "c5e645fd4e28f69f2693749c464d003daca7f2c7bae2a21c26fc134be38f6241",
+      "network-environment.py": "beb6237da73b88067964c1d940f454b5f296eaac29ca9ede9101770a7b15a063",
+      "network-trust.rb": "51ced63df28e28e17602118537f8f325a3b8f02f1d771539a2f1c7eca118a41e"
+    },
+    "private_trust_policy": "Generated from existing host bundle at launch; not distributed",
+    "historical_tags": "UNCHANGED",
+    "notes": "Original binary/content baseline retained; session state and CA material excluded."
+  }
 }

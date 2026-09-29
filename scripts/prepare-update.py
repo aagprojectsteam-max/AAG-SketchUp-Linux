@@ -31,7 +31,8 @@ FOCUS_LOSS_REPAINT FOCUS_REGAIN_REPAINT RIGHT_CLICK_POPUP_FIRST_PAINT NO_BLACK_C
 MENU_FIRST_PAINT TOOLBAR_POPUP_PAINT PLUGIN_DIALOG_FIRST_PAINT PLUGIN_DIALOG_FOCUS_REPAINT
 MAXIMIZE_RESTORE TOUCH_CRASH_CHECK TOUCHPAD_NAVIGATION NATIVE_VIEWPORT_RESOLUTION
 PERFORMANCE_REVIEW FILE_FORMAT_REVIEW ROLLBACK_READY CONTENT_VERSION_REVIEW
-COMPATIBILITY_REVIEW'''.split()
+COMPATIBILITY_REVIEW GENERAL_HTTPS TLS_NEGATIVE_TEST RUBY_HTTPS CEF_HTML_CALLBACK
+BROWSER_CALLBACK ACCOUNT_PERSISTENCE OPTIONAL_ONLINE_SERVICE_REVIEW PLUGIN_HTTPS_REVIEW'''.split()
 DESKTOP_GATES = '''APPS_LAUNCH DOCK_LAUNCH DOCK_FOCUS_EXISTING CORRECT_ICON
 CORRECT_WINDOW_MATCHING NO_DUPLICATE_DOCK_ICON'''.split()
 
@@ -299,7 +300,7 @@ def create(m):
             shutil.copytree(Path(m['sources']['runtime'])/directory,root/'runtime'/directory,symlinks=True,
                             ignore=shutil.ignore_patterns('var','__pycache__'))
         require(runtime_audit(root/'runtime')['files']==m['runtime']['files'],'Runtime copy hash mismatch')
-        for name in ('prepare-update.py','pe_metadata.py','patch-wine-touch.py'):
+        for name in ('prepare-update.py','pe_metadata.py','patch-wine-touch.py','network-environment.py','network-trust.rb'):
             shutil.copy2(Path(__file__).with_name(name),root/'bin'/name)
         shutil.copy2(REPO/'config/compatibility-rules.json',root/'config/compatibility-rules.json')
         (root/'bin/launch-sketchup.py').write_text('#!/usr/bin/env python3\nimport runpy,sys\nfrom pathlib import Path\nr=Path(__file__).resolve().parents[1]\na=runpy.run_path(str(r/"bin/prepare-update.py"))\na["launch"](r, Path(sys.argv[1]) if len(sys.argv)>1 else None)\n')
@@ -333,6 +334,9 @@ def command_env(m):
       STEAM_COMPAT_TOOL_PATHS=str(runtime/m['runtime']['proton_directory'])+':'+str(runtime/m['runtime']['container_directory']),
       UMU_ID='umu-sketchup',STEAM_COMPAT_PROTON='1',STEAM_COMPAT_APP_ID='0',SteamAppId='0',SteamGameId='0',PROTON_ENABLE_WAYLAND='0',
       PROTON_LOG='1',PROTON_LOG_DIR=str(root/'logs'),WINEDEBUG='-all,err+all',PRESSURE_VESSEL_FILESYSTEMS_RO=':'.join(protected))
+    import runpy
+    support=Path(__file__).with_name('network-environment.py')
+    if support.is_file(): env.update(runpy.run_path(str(support))['prepare'](root))
     if m.get('known_settings'): env.update(SU_CEF_DISABLE_GPU='1',PROTON_USE_WINED3D='0',FONTCONFIG_FILE=str(root/'config/fontconfig.conf'))
     return env
 
@@ -418,6 +422,10 @@ def configure_known(m, ucrt, evidence):
     for name in ('runtime-exec.py','popup-present.c','build-popup-helper.py'):
         shutil.copy2(Path(__file__).with_name(name),root/'bin'/name)
     subprocess.run([sys.executable,str(root/'bin/build-popup-helper.py'),'--root',str(root)],check=True)
+    plugins=root/'compatdata/pfx/drive_c/users/steamuser/AppData/Roaming/SketchUp/SketchUp 2026/SketchUp/Plugins'
+    plugins.mkdir(parents=True,exist_ok=True)
+    require(not (plugins/'000_AAG_HostTrust.rb').exists(),'Existing host trust support needs review')
+    shutil.copy2(Path(__file__).with_name('network-trust.rb'),plugins/'000_AAG_HostTrust.rb')
     m['known_settings']=True;m['graphics']='Classic OpenGL / MSAA 8; TEST REQUIRED';m['dpi']='192 / HIGHDPIAWARE; TEST REQUIRED'
     m['fixes_applied']+=list(required);m['configuration_evidence']=evidence;m['old_fixes'].update(UCRT_REQUIRED='YES',DPI_REQUIRED='YES',PAINTING_REQUIRED='YES');store(m)
     return summary(m)

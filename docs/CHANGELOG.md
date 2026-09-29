@@ -45,3 +45,7 @@ Add four reviewed extension groups and scoped first-paint/focus repairs, with re
 ## Update framework — 2026-09-28
 
 Add read-only PE/content/runtime diffing, isolated fresh candidates, conditional compatibility decisions, review gates, explicit journaled promotion/rollback, rejection and cleanup plans. The self-test left production byte-identical; no new application tag. See [framework report](UPDATE-FRAMEWORK-REPORT.md).
+
+## 2026-09-29 networking support
+
+Added private host CA propagation, a prefix-local Ruby bootstrap, proxy-log redaction, native probe sources and network/account requirements for future updates. Core account/networking and three final cold runs passed; 54 automated tests passed. [Results and limits](NETWORKING.md).

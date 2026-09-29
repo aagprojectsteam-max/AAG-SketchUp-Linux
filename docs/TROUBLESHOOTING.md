@@ -106,3 +106,15 @@ A temporary QA-timer candidate once crashed on immediate close. Root cause is un
 ## Future update preparation errors
 
 Use [UPDATE.md](UPDATE.md) for missing/ambiguous PE builds, wrong architecture, incomplete content/runtime, existing candidates and rollback failures. A rejected candidate is not a reason to overwrite production. Prefix initialization needs the normal HOME environment and the recorded GE non-Steam flags; the framework self-test caught and fixed both omissions. A partial failed prefix is retained for review and must not be blindly merged.
+
+## Secure Internet connectivity
+
+A host CA path can exist in Ubuntu but be absent inside sniper. The networking
+helper supplies a validated private copy. Embedded Ruby needs the separate
+prefix-local bootstrap because SketchUp resets its SSL certificate environment.
+Use [NETWORKING.md](NETWORKING.md) for the comparisons and negative TLS tests.
+
+Service-specific outcomes remain separate: Connect can require its own terms;
+Generate Report can show a host filtering-policy block; Add Location address
+search can work while its map fails WebGL initialization. Do not remove the
+validated CEF GPU setting or bypass network policy merely to hide these limits.

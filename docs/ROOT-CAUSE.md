@@ -129,3 +129,13 @@ The exact upstream change causing the retained HTML defect remains unproven.
 ## Version metadata used by future audits
 
 The tested SketchUp executable has fixed PE version 26.0.0.0 and bounded StringFileInfo build 26.1.252. Update comparison now preserves both and uses the unambiguous string build; filename or fixed header alone would misidentify patch releases. See [UPDATE.md](UPDATE.md).
+
+## General network trust integration
+
+The host's CA-bundle path was missing inside the actual container. DNS still
+worked; inspected HTTPS chains failed. Supplying the existing host bundle fixed
+container TLS and the controlled WinHTTP/WinINet test without weakening validation.
+SketchUp then independently reset embedded Ruby's SSL_CERT_FILE to its vendor
+bundle; a prefix-local bootstrap repaired Ruby's default store. See the complete
+[network comparison, callback and failed-experiment record](NETWORKING.md).
+No application binary or vendor CA file was patched for networking.

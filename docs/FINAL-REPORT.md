@@ -51,3 +51,7 @@ The dedicated public repository is [AAG-SketchUp-Linux](https://github.com/aagpr
 ## Limits
 
 No reboot/logout was coordinated. Persistent paths and three cold launches were verified within the existing login. SKP file associations were intentionally left unchanged. Cloud services, another account's licensing flow, LayOut, printing, third-party extensions, multitouch gestures and large/long-duration workloads remain outside this validation. These limits do not conceal a failed mandatory basic-modeling gate.
+
+## Subsequent networking acceptance, 2026-09-29
+
+Core account/browser-callback/persistence and general secure Internet checks now pass in their recorded scopes. The original report above remains the historical Base acceptance. See [NETWORKING.md](NETWORKING.md) for current service outcomes, three additional cold runs, cleanup, the earlier diagnostic failure, and the unchanged graphics/input/painting configuration.

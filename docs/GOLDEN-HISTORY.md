@@ -31,3 +31,7 @@ actual application/content/runtime versions, graphics/DPI, required and removed
 fixes, plugin scope, exact commit/new tag, active launcher target and verified
 rollback reference. Keep private paths in local records. Add a sanitized
 [per-version report](updates/TEMPLATE.md); do not overwrite prior evidence.
+
+## Networking support maintenance
+
+The 2026-09-29 maintenance change adds secure host-trust integration and verified core sign-in/persistence to the same app/runtime. It preserves both historical tags and independent backups. It does not create an application-upgrade tag. See [networking results](NETWORKING.md) and the [gate record](network-acceptance.json), including optional service limitations.

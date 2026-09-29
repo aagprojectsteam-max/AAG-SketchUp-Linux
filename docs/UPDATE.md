@@ -329,3 +329,28 @@ proprietary material. Add only reviewed new paths to both publication allowlists
 Commit, create a new annotated immutable Golden tag, push commit/tag, compare local
 and remote objects, and verify a clean worktree. Documentation/tooling alone does
 not justify another application Golden tag.
+
+## Required network and account regression
+
+Read [NETWORKING.md](NETWORKING.md) before preparing an update. Candidate creation
+copies the original networking helpers. The exact-known-build configuration
+recipe installs the Ruby bootstrap into a fresh 2026 prefix. Unknown releases
+require review of their Ruby path, default trust store and Wine host-root import;
+copying a helper does not establish compatibility.
+
+The base evidence template now requires `GENERAL_HTTPS`, `TLS_NEGATIVE_TEST`,
+`RUBY_HTTPS`, `CEF_HTML_CALLBACK`, `BROWSER_CALLBACK`, `ACCOUNT_PERSISTENCE`,
+`OPTIONAL_ONLINE_SERVICE_REVIEW` and `PLUGIN_HTTPS_REVIEW`. Missing, failed,
+untested or deferred **core gates** prevent base acceptance. Review gates pass
+only after recording the actual service/plugin matrix; they do not mean every
+optional service passes. Separate legal/account requirements for optional services
+may be recorded USER_ACTION_DEFERRED without accepting anything for the user.
+
+Compare host, actual container and Windows APIs; test normal Ruby/OpenSSL and
+CEF HTTPS plus an HtmlDialog callback. Verify rejection of a controlled untrusted
+local certificate. Trigger core login only if needed, with the user personally
+handling credentials/legal steps, and verify SketchUp's account UI after the
+normal browser callback and clean relaunches. Keep listeners loopback-only;
+remove diagnostic servers afterward. Retest painting/DPI/hardware acceleration.
+Never publish CA bundles, auth URLs, cookies, tokens, prefix or account screenshots.
+The historical application tags are immutable; tooling updates do not retag them.

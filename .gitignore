@@ -70,3 +70,22 @@
 !/artifacts/current-golden-baseline.json
 !/docs/update-framework-acceptance.json
 !/docs/updates/TEMPLATE.md
+
+# Original networking support only; generated trust stays private.
+!/scripts/network-environment.py
+!/tests/test_network_environment.py
+!/scripts/network-trust.rb
+
+# Trust and authentication artifacts remain local, including under docs.
+*.pem
+*.crt
+*.key
+*.p12
+*.pfx
+*cookies*.json
+*session*.sqlite*
+
+!/tests/network-probe.c
+!/tests/network-wininet.c
+
+!/docs/network-acceptance.json

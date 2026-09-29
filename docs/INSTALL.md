@@ -168,3 +168,17 @@ The current support build also needs a C compiler, binutils and X11/XCB/XRender
 development headers (`build-essential binutils libx11-dev libxcb1-dev libxrender-dev`
 on Ubuntu). Preparation builds the original local popup helper; no vendor
 DLL is modified for this fix. See [window painting](WINDOW-PAINTING.md) for scope, tests and rollback.
+
+## Host trust and account setup
+
+The launcher copies the existing host CA bundle into its private `config/network/`
+directory and supplies it to the container and Wine. The installer also places
+`000_AAG_HostTrust.rb` in this prefix's SketchUp 2026 Plugins directory to account
+for SketchUp resetting Ruby's certificate path. Original helper sources are in
+this repository; certificates, credentials and session data are not.
+
+A missing or invalid explicitly configured `SSL_CERT_FILE` stops preparation of
+network trust. Correct the host configuration; do not fall back to disabled TLS.
+Restart after a host trust change. Sign in personally using the normal default
+browser, then check SketchUp's account menu and a clean relaunch. See
+[NETWORKING.md](NETWORKING.md) for exact tested APIs, callback behavior and limits.

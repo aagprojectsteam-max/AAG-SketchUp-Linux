@@ -37,7 +37,9 @@ ALLOWED.update({
     'tests/test_update_workflow.py',
     'tests/update-model.rb',
 })
+ALLOWED.update({'docs/network-acceptance.json', 'tests/network-probe.c', 'tests/network-wininet.c', 'docs/NETWORKING.md', 'scripts/network-environment.py', 'tests/test_network_environment.py', 'scripts/network-trust.rb'})
 PATTERNS = {
+    'certificate material': r'-----BEGIN (?:TRUSTED )?CERTIFICATE-----',
     'credential token': r'\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16})\b',
     'private key': r'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',
     'private absolute path': r'/(?:home/[^\s/]+|mnt/data)/',

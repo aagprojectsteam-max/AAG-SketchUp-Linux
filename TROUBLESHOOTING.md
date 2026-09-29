@@ -25,3 +25,11 @@ Start with the installation's self-check and local diagnostic report:
 See the [complete troubleshooting guide](docs/TROUBLESHOOTING.md) for diagnostics and recovery, and [root causes](docs/ROOT-CAUSE.md) for hashes and evidence.
 
 Save work and back up before changes. Do not globally kill Wine: unrelated applications may be running. Review logs before sharing; raw dumps, account data and models do not belong in the public repository. Runtime/app/driver updates require a new regression run.
+
+## Internet or sign-in failures
+
+Follow the [layered network checks](docs/NETWORKING.md). Compare normal host HTTPS,
+container trust, Wine APIs, Ruby and CEF separately. A host filtering-policy page
+is not a TLS fault. Browser login success must also appear in SketchUp's account
+menu and survive a clean relaunch. Do not publish CA bundles, callback parameters,
+account screenshots, browser profiles or raw logs.
